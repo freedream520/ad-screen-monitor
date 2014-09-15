@@ -1,0 +1,82 @@
+<!doctype html>
+<html  ng-app="adScreenMonitor">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+    <!-- build:css(.) styles/vendor.css -->
+    <!-- bower:css -->
+    <link rel="stylesheet" href="bower_components/bootstrap/docs/assets/css/bootstrap.css" />
+    <!-- endbower -->
+    <!-- endbuild -->
+    <!-- build:css(app) styles/skins.css -->
+    <link rel="stylesheet" href="skins/styles/unicorn.main.css" />
+    <link rel="stylesheet" href="skins/styles/unicorn.grey.css" class="skin-color" />  
+    <!-- endbuild -->
+  </head>
+  <body ng-controller="MainController">
+    <div id="header">
+      <h1><a href="/">LocalAd Admin</a></h1>   
+    </div>
+            
+    <div id="sidebar" ng-controller="SideNavController">
+      <ul>
+        <li class="active submenu open">
+          <a href="#"><span>Sample pages</span></a>
+          <ul>
+            <li class="active"><a href="#">Invioce</a></li>
+            <li><a href="#">Support chat</a></li>
+            <li><a href="#">Calendar</a></li>
+            <li><a href="#">Gallery</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#"><span>Charts &amp; graphs</span></a>
+        </li>
+      </ul>
+    
+    </div>
+    
+    <div id="content">
+      <div id="content-header">
+        <h1>广告屏管理</h1>
+      </div>
+      <div id="breadcrumb">
+        <a href="#" title="Go to Home" class="tip-bottom"><i class="icon-home"></i>首页</a>
+        <a href="#">广告屏管理</a>
+        <a href="#" class="current">终端管理</a>
+      </div>
+      <div class="container-fluid">
+        
+        <div class="row-fluid">
+          主要内容
+        </div>
+        <div class="row-fluid">
+          <div id="footer" class="span12">
+            <p>2014 &copy; LocalAd 局域网本地广告 <a href="http://www.LocalAd.org.cn">http://www.LocalAd.org.cn</a></p>
+            <p>系统外观模板 Unicorn Admin Template 由<a href="https://wrapbootstrap.com/user/diablo9983">diablo9983(diablo9983@gmail.com)</a>提供</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- build:js(.) scripts/vendor.js -->
+    <!-- bower:js -->
+    <script src="bower_components/jquery/jquery.js"></script>
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/bootstrap/docs/assets/js/bootstrap.js"></script>
+    <!-- endbower -->
+    <!-- endbuild -->
+
+    <!-- build:js({.tmp,app}) scripts/scripts.js -->
+    <script src="scripts/app.js"></script>
+    <script src="scripts/controllers/main.js"></script>
+    <script src="scripts/controllers/sidenavcontroller.js"></script>
+    <!-- endbuild -->
+
+    <!-- build:js({.tmp,app}) scripts/skins.js -->
+    <script src="skins/scripts/unicorn.js"></script>
+    <!-- endbuild -->
+</body>
+</html>
