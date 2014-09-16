@@ -22,17 +22,11 @@
             
     <div id="sidebar" ng-controller="SideNavController">
       <ul>
-        <li class="active submenu open">
-          <a href="#"><span>Sample pages</span></a>
+        <li ng-repeat="item in items" ng-class="{ active: item.active, submenu: !!item.items.length, open:item.open }">
+          <a href="{{ item.url }}"><span>{{ item.title }}</span></a>
           <ul>
-            <li class="active"><a href="#">Invioce</a></li>
-            <li><a href="#">Support chat</a></li>
-            <li><a href="#">Calendar</a></li>
-            <li><a href="#">Gallery</a></li>
+            <li ng-repeat="sub in item.items" ng-class="{ active: sub.active }"><a href="{{ sub.url }}">{{ sub.title }}</a></li>
           </ul>
-        </li>
-        <li>
-          <a href="#"><span>Charts &amp; graphs</span></a>
         </li>
       </ul>
     
@@ -43,14 +37,12 @@
         <h1>广告屏管理</h1>
       </div>
       <div id="breadcrumb">
-        <a href="#" title="Go to Home" class="tip-bottom"><i class="icon-home"></i>首页</a>
+        <a href="/" title="Go to Home" class="tip-bottom"><i class="icon-home"></i>首页</a>
         <a href="#">广告屏管理</a>
         <a href="#" class="current">终端管理</a>
       </div>
       <div class="container-fluid">
-        
-        <div class="row-fluid">
-          主要内容
+        <div class="row-fluid" ng-view>
         </div>
         <div class="row-fluid">
           <div id="footer" class="span12">
@@ -66,6 +58,7 @@
     <script src="bower_components/jquery/jquery.js"></script>
     <script src="bower_components/angular/angular.js"></script>
     <script src="bower_components/bootstrap/docs/assets/js/bootstrap.js"></script>
+    <script src="bower_components/angular-route/angular-route.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
@@ -73,9 +66,8 @@
     <script src="scripts/app.js"></script>
     <script src="scripts/controllers/main.js"></script>
     <script src="scripts/controllers/sidenavcontroller.js"></script>
-    <!-- endbuild -->
-
-    <!-- build:js({.tmp,app}) scripts/skins.js -->
+    <script src="scripts/controllers/screen.js"></script>
+    <script src="scripts/controllers/home.js"></script>
     <script src="skins/scripts/unicorn.js"></script>
     <!-- endbuild -->
 </body>
