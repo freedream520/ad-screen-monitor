@@ -327,8 +327,19 @@ a:hover {
 }
 /* Footer */
 #footer {
-	text-align: center;
+	text-align: left;
 	color: #777777;
+    padding: 10px 0px 10px 200px;
+}
+#footer p {
+    margin: 0px;
+    line-height: 150%;
+}
+#footer p a {
+    color: #777777;
+}
+#footer p a:hover {
+    color: #cccccc;
 }
 /* Stat boxes and quick actions */
 .stat-boxes, .quick-actions, .quick-actions-horizontal, .stats-plain {
@@ -1221,6 +1232,10 @@ div.dataTables_wrapper .ui-widget-header {
 .table tr.checked td {
 	background-color: #FFFFE3 !important;
 }
+.table tr td.ctrl {
+    text-align: center;
+}
+
 /* Misc */
 .nopadding {	
 	padding: 0 !important;

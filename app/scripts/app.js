@@ -16,14 +16,25 @@ angular
   .config(['$routeProvider', function($routeProvider){
     $routeProvider
     .when('/', {
+      redirectTo: '/ad-screen'
+      /*
       templateUrl: 'views/home.html',
       controller: 'HomeController'
+      */
     })
-    .when('/screen', {
-      templateUrl: 'views/screen.html',
-      controller: 'ScreenController'
+    .when('/ad-screen', {
+      templateUrl: 'views/ad-screen.html',
+      controller: 'AdScreenController'
+    })
+    .when('/screen-ad', {
+      templateUrl: 'views/screen-ad.html',
+      controller: 'ScreenAdController'
+    })
+    .when('/screen-group', {
+      templateUrl: 'views/screen-group.html',
+      controller: 'ScreenGroupController'
     })
     .otherwise({
-        redirectTo: '/'
+      redirectTo: '/ad-screen'
     });
   }]);

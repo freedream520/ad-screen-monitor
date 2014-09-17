@@ -14,7 +14,7 @@ angular.module('adScreenMonitor')
             title: '广告屏管理', url: '#', active: false, open: false, 
             items:  [
                 { title: '终端组', url: '#/screen-group', active: false },
-                { title: '终端管理', url: '#/screen', active: false },
+                { title: '终端管理', url: '#/ad-screen', active: false },
                 { title: '广告管理', url: '#/screen-ad', active: false }
             ] 
         }

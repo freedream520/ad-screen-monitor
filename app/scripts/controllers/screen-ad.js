@@ -2,13 +2,13 @@
 
 /**
  * @ngdoc function
- * @name adScreenMonitor.controller:ScreenController
+ * @name adScreenMonitor.controller:ScreenAdController
  * @description
- * # ScreenController
+ * # ScreenAdController
  * Controller of the adScreenMonitor
  */
 angular.module('adScreenMonitor')
-  .controller('ScreenController', function ($scope) {
+  .controller('ScreenAdController', function ($scope) {
     $scope.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',

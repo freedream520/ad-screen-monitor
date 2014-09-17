@@ -25,50 +25,50 @@
         <li ng-repeat="item in items" ng-class="{ active: item.active, submenu: !!item.items.length, open:item.open }">
           <a href="{{ item.url }}"><span>{{ item.title }}</span></a>
           <ul>
-            <li ng-repeat="sub in item.items" ng-class="{ active: sub.active }"><a href="{{ sub.url }}">{{ sub.title }}</a></li>
+            <li ng-repeat="sub in item.items" ng-class="{ active: sub.active }"><a ng-href="{{ sub.url }}">{{ sub.title }}</a></li>
           </ul>
         </li>
       </ul>
-    
     </div>
     
-    <div id="content">
-      <div id="content-header">
-        <h1>广告屏管理</h1>
-      </div>
-      <div id="breadcrumb">
-        <a href="/" title="Go to Home" class="tip-bottom"><i class="icon-home"></i>首页</a>
-        <a href="#">广告屏管理</a>
-        <a href="#" class="current">终端管理</a>
-      </div>
-      <div class="container-fluid">
-        <div class="row-fluid" ng-view>
-        </div>
-        <div class="row-fluid">
-          <div id="footer" class="span12">
-            <p>2014 &copy; LocalAd 局域网本地广告 <a href="http://www.LocalAd.org.cn">http://www.LocalAd.org.cn</a></p>
-            <p>系统外观模板 Unicorn Admin Template 由<a href="https://wrapbootstrap.com/user/diablo9983">diablo9983(diablo9983@gmail.com)</a>提供</p>
-          </div>
-        </div>
-      </div>
+    <div id="content" ng-view>
+    </div>
+
+    <div id="footer" class="span12">
+      <p>2014 &copy; LocalAd 局域网本地广告 <a href="http://www.LocalAd.org.cn">http://www.LocalAd.org.cn</a></p>
+      <p>系统外观模板（Unicorn Admin Template）由 <a href="https://wrapbootstrap.com/user/diablo9983">diablo9983@gmail.com</a> 提供</p>
     </div>
 
     <!-- build:js(.) scripts/vendor.js -->
     <!-- bower:js -->
     <script src="bower_components/jquery/jquery.js"></script>
+    <script src="bower_components/lodash/dist/lodash.compat.js"></script>
     <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/restangular/dist/restangular.js"></script>
     <script src="bower_components/bootstrap/docs/assets/js/bootstrap.js"></script>
     <script src="bower_components/angular-route/angular-route.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
     <!-- build:js({.tmp,app}) scripts/scripts.js -->
+    <script src="skins/scripts/unicorn.js"></script>
+
     <script src="scripts/app.js"></script>
     <script src="scripts/controllers/main.js"></script>
-    <script src="scripts/controllers/sidenavcontroller.js"></script>
-    <script src="scripts/controllers/screen.js"></script>
     <script src="scripts/controllers/home.js"></script>
-    <script src="skins/scripts/unicorn.js"></script>
+
+    <script src="scripts/controllers/side-nav.js"></script>
+    <script src="scripts/controllers/screen-ad.js"></script>
+    <script src="scripts/controllers/screen-group.js"></script>
+    <script src="scripts/controllers/ad-screen.js"></script>
+    <script src="scripts/controllers/ad-screen-list.js"></script>
+    <script src="scripts/controllers/ad-screen-filter.js"></script>
+    <script src="scripts/controllers/ad-screen-edit.js"></script>
+    
+    <script src="scripts/services/ad-screen-service.js"></script>
+    <script src="scripts/services/screen-group-service.js"></script>
+    <script src="scripts/services/screen-ad-service.js"></script>
+    <script src="scripts/services/ad-screen-filter-service.js"></script>
     <!-- endbuild -->
 </body>
 </html>

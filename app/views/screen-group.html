@@ -1,0 +1,37 @@
+<div id="content-header">
+    <h1>广告屏管理</h1>
+</div>
+<div id="breadcrumb">
+    <a href="/" title="Go to Home" class="tip-bottom"><i class="icon-home"></i>首页</a>
+    <a href="#/screen">广告屏管理</a>
+    <a href="#/screen-group" class="current">终端组管理</a>
+</div>
+<div class="container-fluid">
+    <div class="widget-box">
+        <div class="widget-title">
+            <span class="icon"><i class="icon-th-list"></i></span>
+            <h5>广告屏终端组</h5>
+        </div>
+        <div class="widget-content nopadding">
+            <table class="table table-bordered table-striped">
+                <thead>
+                    <tr>
+                        <th>名称</th><th>描述</th><th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="item in items">
+                        <td>{{ item.title }}</td>
+                        <td>{{ item.description }}</td>
+                        <td>
+                            <button class="btn btn-mini"><i class="icon-eye-open"></i> 查看组中的广告终端</button>
+                            <button class="btn btn-primary btn-mini"><i class="icon-pencil icon-white"></i> 修改</button>
+                            <button class="btn btn-danger btn-mini"><i class="icon-remove icon-white"></i> 删除</button>
+                            <button ng-show="$last" class="btn btn-primary btn-mini"><i class="icon-plus icon-white"></i> 添加</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>                            
+        </div>
+    </div>
+</div>
