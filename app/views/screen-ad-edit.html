@@ -1,0 +1,92 @@
+<div id="content-header">
+    <h1>广告屏管理</h1>
+</div>
+<div id="breadcrumb">
+    <a href="/" title="Go to Home" class="tip-bottom"><i class="icon-home"></i>首页</a>
+    <a href="#/screen">广告屏管理</a>
+    <a href="#/screen-ad" class="current">广告</a>
+</div>
+<div class="container-fluid">
+    <div class="widget-box">
+        <div class="widget-title">
+            <span class="icon"><i class="icon-th-list"></i></span>
+            <h5>基本信息</h5>
+        </div>
+        <div class="widget-content">
+            <div class="row" ng-controller="ScreenAdEditBasicController">
+                <form class="form-horizontal span8">
+                  <div class="control-group">
+                    <label class="control-label">广告位置：</label>
+                    <div class="controls">
+                      <select ng-model="current.item.slotType" ng-change="changeSlotType();">
+                        <option ng-repeat="item in slotTypes" value="{{ item.name }}">{{ item.description }}</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="control-group">
+                    <label class="control-label">物料类型：</label>
+                    <div class="controls">
+                      <select>
+                        <option ng-repeat="item in materielTypes" value="{{ item.name }}">{{ item.description }}</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="control-group">
+                    <label class="control-label">广告主题：</label>
+                    <div class="controls">
+                        <input type="text" />
+                    </div>
+                  </div>
+                  <div class="control-group">
+                    <label class="control-label">上传物料：</label>
+                    <div class="controls">
+                        <input type="text" />
+                    </div>
+                  </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="widget-box">
+        <div class="widget-title">
+            <span class="icon"><i class="icon-th-list"></i></span>
+            <h5>投放策略</h5>
+        </div>
+        <div class="widget-content nopadding">
+            <div class="row" ng-controller="ScreenAdEditStrategyController">
+                <form class="form-horizontal">
+                  <div class="control-group">
+                    <label class="control-label">广告屏终端组：</label>
+                    <div class="controls">
+                        <label class="checkbox span3" ng-repeat="item in screenGroups"><input type="checkbox" value="{{ item.id }}"> {{ item.title }}</label>
+                    </div>
+                  </div>
+                  <div class="control-group">
+                    <label class="control-label">广告屏终端：</label>
+                    <div class="controls">
+                        <label class="checkbox span3" ng-repeat="item in adScreens"><input type="checkbox" value="{{ item.id }}"> {{ item.title }}</label>
+                    </div>
+                  </div>
+                  <div class="control-group">
+                    <label class="control-label">开始投放：</label>
+                    <div class="controls">
+                      <input type="text" class="span3" />
+                    </div>
+                  </div>
+                  <div class="control-group">
+                    <label class="control-label">结束投放：</label>
+                    <div class="controls">
+                        <input type="text" class="span3" />
+                    </div>
+                  </div>
+                  <div class="control-group">
+                    <div class="controls">
+                      <label class="checkbox"><input type="checkbox"> 激活</label>
+                      <button class="btn">确认</button>
+                    </div>
+                  </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

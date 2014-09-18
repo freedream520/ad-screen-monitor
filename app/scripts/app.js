@@ -22,11 +22,15 @@ angular
       controller: 'HomeController'
       */
     })
-    .when('/ad-screen', {
+    .when('/screen-group', {
+      templateUrl: 'views/screen-group.html',
+      controller: 'ScreenGroupController'
+    })
+    .when('/ad-screen/:group', {
       templateUrl: 'views/ad-screen.html',
       controller: 'AdScreenController'
     })
-    .when('/ad-screen/:group', {
+    .when('/ad-screen', {
       templateUrl: 'views/ad-screen.html',
       controller: 'AdScreenController'
     })
@@ -34,9 +38,13 @@ angular
       templateUrl: 'views/screen-ad.html',
       controller: 'ScreenAdController'
     })
-    .when('/screen-group', {
-      templateUrl: 'views/screen-group.html',
-      controller: 'ScreenGroupController'
+    .when('/screen-ad-edit', {
+      templateUrl: 'views/screen-ad-edit.html',
+      controller: 'ScreenAdEditController'
+    })
+    .when('/screen-ad-edit/:aid', {
+      templateUrl: 'views/screen-ad-edit.html',
+      controller: 'ScreenAdEditController'
     })
     .otherwise({
       redirectTo: '/ad-screen'
