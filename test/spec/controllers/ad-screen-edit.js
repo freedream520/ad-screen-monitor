@@ -16,7 +16,7 @@ describe('Controller: AdScreenEditController', function () {
     });
   }));
 
-  it('should attach a list of item to the scope', function () {
-    expect(!!scope.item).toBe(true);
+  it('should attach a list of submitEdit to the scope', function () {
+    expect(!!scope.submitEdit).toBe(true);
   });
 });

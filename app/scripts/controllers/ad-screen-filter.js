@@ -10,9 +10,13 @@
 angular.module('adScreenMonitor')
   .controller('AdScreenFilterController', function ($scope, screenGroupService, adScreenFilterService) {
     var items = screenGroupService.getList();
-    if(items.length){
-        adScreenFilterService.filters.group = items[0].id;
-    }
     $scope.items = items;
     $scope.adScreenFilterService = adScreenFilterService;
+    if(items.length){
+        var group = items[0].id;
+        if($scope.group){
+            group = $scope.group;
+        }
+        adScreenFilterService.filters.group = group;
+    }
   });

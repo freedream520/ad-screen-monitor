@@ -23,6 +23,23 @@ angular.module('adScreenMonitor')
       },
       addItem: function(item){
         items.push(item);
+      },
+      updateItem: function(item){
+        var i;
+        for(i = 0; i < items.length; i++){
+          if(items[i].id === item.id){
+            items[i] = item;
+            return;
+          }
+        }
+      },
+      getItem: function(){
+        return {
+          id: '',
+          title: '',
+          description: '',
+          group: '1'
+        };
       }
     };
   });

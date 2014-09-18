@@ -19,15 +19,27 @@
                         <th>名称</th><th>描述</th><th></th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody ng-controller="ScreenGroupListController">
                     <tr ng-repeat="item in items">
                         <td>{{ item.title }}</td>
                         <td>{{ item.description }}</td>
                         <td>
-                            <button class="btn btn-mini"><i class="icon-eye-open"></i> 查看组中的广告终端</button>
-                            <button class="btn btn-primary btn-mini"><i class="icon-pencil icon-white"></i> 修改</button>
-                            <button class="btn btn-danger btn-mini"><i class="icon-remove icon-white"></i> 删除</button>
-                            <button ng-show="$last" class="btn btn-primary btn-mini"><i class="icon-plus icon-white"></i> 添加</button>
+                            <a class="btn btn-mini" ng-href="#/ad-screen/{{ item.id }}"><i class="icon-eye-open"></i> 查看组中的广告终端</a>
+                            <button class="btn btn-primary btn-mini" ng-click="showEditor(item);"><i class="icon-pencil icon-white"></i> 修改</button>
+                            <!--<button class="btn btn-danger btn-mini"><i class="icon-remove icon-white"></i> 删除</button>-->
+                            <button ng-show="$last" class="btn btn-primary btn-mini" ng-click="showEditor();">
+                                <i class="icon-plus icon-white"></i> 添加
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+                <tbody ng-controller="ScreenGroupEditController" ng-show="state.editing">
+                    <tr>
+                        <td><input type="text" ng-model="current.item.title" class="span2" /></td>
+                        <td><input type="text" ng-model="current.item.description" class="span4" /></td>
+                        <td>
+                            <button class="btn btn-primary btn-mini" ng-click="submitEdit();"><i class="icon-ok icon-white"></i> 确认</button>
+                            <button class="btn btn-mini" ng-click="cancelEdit();"><i class="icon-repeat icon-white"></i> 取消</button>
                         </td>
                     </tr>
                 </tbody>

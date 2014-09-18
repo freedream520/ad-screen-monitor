@@ -26,6 +26,10 @@ angular
       templateUrl: 'views/ad-screen.html',
       controller: 'AdScreenController'
     })
+    .when('/ad-screen/:group', {
+      templateUrl: 'views/ad-screen.html',
+      controller: 'AdScreenController'
+    })
     .when('/screen-ad', {
       templateUrl: 'views/screen-ad.html',
       controller: 'ScreenAdController'

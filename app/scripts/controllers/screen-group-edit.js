@@ -2,19 +2,19 @@
 
 /**
  * @ngdoc function
- * @name adScreenMonitor.controller:AdScreenEditController
+ * @name adScreenMonitor.controller:ScreenGroupEditController
  * @description
- * # AdScreenEditController
+ * # ScreenGroupEditController
  * Controller of the adScreenMonitor
  */
 angular.module('adScreenMonitor')
-  .controller('AdScreenEditController', function ($scope, adScreenService) {
+  .controller('ScreenGroupEditController', function ($scope, screenGroupService) {
     $scope.submitEdit = function(){
         $scope.state.editing = false;
         if($scope.current.item.id){
-            adScreenService.updateItem($scope.current.item);
+            screenGroupService.updateItem($scope.current.item);
         }else{
-            adScreenService.addItem($scope.current.item);
+            screenGroupService.addItem($scope.current.item);
         }
     };
     $scope.cancelEdit = function(){ 

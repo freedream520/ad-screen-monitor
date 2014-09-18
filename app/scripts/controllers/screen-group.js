@@ -8,6 +8,11 @@
  * Controller of the adScreenMonitor
  */
 angular.module('adScreenMonitor')
-  .controller('ScreenGroupController', function ($scope, screenGroupService) {
-    $scope.items = screenGroupService.getList();
+  .controller('ScreenGroupController', function ($scope) {
+    $scope.state = {
+        editing: false
+    };
+    $scope.current = {
+        item: {}
+    };
   });
