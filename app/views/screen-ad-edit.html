@@ -37,10 +37,10 @@
                         <input type="text" />
                     </div>
                   </div>
-                  <div class="control-group">
+                  <div class="control-group" ng-hide="'scroll' === current.item.slotType">
                     <label class="control-label">上传物料：</label>
                     <div class="controls">
-                        <input type="text" />
+                        <input type="file" fileupload data-url="" done="uploadFinished(e, data)" />
                     </div>
                   </div>
                 </form>
@@ -53,39 +53,50 @@
             <h5>投放策略</h5>
         </div>
         <div class="widget-content nopadding">
-            <div class="row" ng-controller="ScreenAdEditStrategyController">
+          <div class="row">
+            <div ng-controller="ScreenAdEditStrategyController">
                 <form class="form-horizontal">
-                  <div class="control-group">
-                    <label class="control-label">广告屏终端组：</label>
-                    <div class="controls">
-                        <label class="checkbox span3" ng-repeat="item in screenGroups"><input type="checkbox" value="{{ item.id }}"> {{ item.title }}</label>
+                  <div class="span12">
+                    <div class="control-group">
+                      <label class="control-label">投放目标：</label>
+                      <div class="controls">
+                        <div class="row">
+                          <div class="span1"><label class="checkbox"><input type="checkbox"> 全选</label></div>
+                          <div class="span1"><label class="checkbox span2"><input type="checkbox"> 反选</label></div>
+                        </div>
+                        <div class="row">
+                          <dl class="dl-horizontal" ng-repeat="item in screenGroups">
+                            <dt style="text-align:left;"><label class="checkbox"><input type="checkbox" value="{{ item.id }}"> {{ item.title }}</label></dt>
+                            <dd>
+                              <label class="checkbox span2" ng-repeat="sub in adScreens | filter: { group: item.id }"><input type="checkbox" value="{{ sub.id }}"> {{ sub.title }}</label>
+                            </dd>
+                          </dl>
+                        </div>
+                      </div>
                     </div>
                   </div>
-                  <div class="control-group">
-                    <label class="control-label">广告屏终端：</label>
-                    <div class="controls">
-                        <label class="checkbox span3" ng-repeat="item in adScreens"><input type="checkbox" value="{{ item.id }}"> {{ item.title }}</label>
+                  <div class="span6">
+                    <div class="control-group">
+                      <label class="control-label">开始投放：</label>
+                      <div class="controls">
+                        <input datepicker ng-model="current.item.start" type="text" class="span3" />
+                      </div>
                     </div>
-                  </div>
-                  <div class="control-group">
-                    <label class="control-label">开始投放：</label>
-                    <div class="controls">
-                      <input type="text" class="span3" />
+                    <div class="control-group">
+                      <label class="control-label">结束投放：</label>
+                      <div class="controls">
+                          <input datepicker ng-model="current.item.end" type="text" class="span3" />
+                      </div>
                     </div>
-                  </div>
-                  <div class="control-group">
-                    <label class="control-label">结束投放：</label>
-                    <div class="controls">
-                        <input type="text" class="span3" />
-                    </div>
-                  </div>
-                  <div class="control-group">
-                    <div class="controls">
-                      <label class="checkbox"><input type="checkbox"> 激活</label>
-                      <button class="btn">确认</button>
+                    <div class="control-group">
+                      <div class="controls">
+                        <label class="checkbox"><input type="checkbox"> 激活状态</label>
+                        <button class="btn">确认</button>
+                      </div>
                     </div>
                   </div>
                 </form>
+              </div>
             </div>
         </div>
     </div>

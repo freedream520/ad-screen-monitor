@@ -11,6 +11,9 @@ describe('Controller: ScreenAdEditBasicController', function () {
   // Initialize the controller and a mock scope
   beforeEach(inject(function ($controller, $rootScope) {
     scope = $rootScope.$new();
+    scope.current = {
+        item: {}
+    };
     ScreenAdEditBasicController = $controller('ScreenAdEditBasicController', {
       $scope: scope
     });

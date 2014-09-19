@@ -4,7 +4,10 @@
   "dependencies": {
     "lodash": "~2.4.1",
     "angular": "~1.2.0",
-    "restangular": "1.4.0",
+    "jquery": ">=1.8",
+    "jquery-ui": "~1.10.4",
+    "jqueryui-timepicker-addon": "~1.4.5",
+    "jquery-file-upload": "9.8.0",
     "bootstrap": "~2.2.1",
     "angular-route": "~1.2.24",
     "restangular": "~1.4.0"

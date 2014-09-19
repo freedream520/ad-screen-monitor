@@ -30,4 +30,9 @@ angular.module('adScreenMonitor')
         var slotType = $scope.current.item.slotType;
         $scope.materielTypes = slotMaterielTypes[slotType];
     };
+
+    $scope.uploadFinished = function(e, data){
+        console.log(e);
+        console.log(data);
+    };
   });
