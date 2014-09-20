@@ -1533,3 +1533,13 @@ form {
 		text-align: center;
 	}
 }
+
+
+/*- 自定义样式 -*/
+.ui-jqgrid .ui-jqgrid-bdiv{
+    overflow: hidden;
+}
+.ui-jqgrid tr.jqgrow td{
+    line-height: 150%;
+    padding: 0px 5px 0px 5px;
+}

@@ -11,9 +11,7 @@ angular.module('adScreenMonitor')
     return {
       restrict: 'A',
       require: '?ngModel',
-      scope: {
-        select: '&'
-      },
+      scope: true,
       link: function postLink(scope, element, attrs, ngModel) {
         if(!ngModel){
           return;

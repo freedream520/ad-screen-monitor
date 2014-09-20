@@ -1,6 +1,6 @@
 'use strict';
 
-describe('Directive: datetimepicker', function () {
+describe('Directive: jqGrid', function () {
 
   // load the directive's module
   beforeEach(module('adScreenMonitor'));
@@ -15,8 +15,8 @@ describe('Directive: datetimepicker', function () {
   it('should make hidden element visible', inject(function ($compile) {
     console.log(element);
     console.log($compile);
-    //element = angular.element('<datetimepicker></datetimepicker>');
+    //element = angular.element('<jq-grid></jq-grid>');
     //element = $compile(element)(scope);
-    //expect(element.text()).toBe('this is the datetimepicker directive');
+    //expect(element.text()).toBe('this is the jqGrid directive');
   }));
 });

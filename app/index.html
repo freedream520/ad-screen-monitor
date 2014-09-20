@@ -7,17 +7,20 @@
     <meta name="viewport" content="width=device-width">
     <!-- build:css(.) styles/vendor.css -->
     <!-- bower:css -->
+    <link rel="stylesheet" href="bower_components/jqgrid/css/ui.jqgrid.css" />
     <link rel="stylesheet" href="bower_components/jquery-file-upload/css/jquery.fileupload.css" />
     <link rel="stylesheet" href="bower_components/jquery-file-upload/css/jquery.fileupload-ui.css" />
     <link rel="stylesheet" href="bower_components/jquery-file-upload/css/jquery.fileupload-noscript.css" />
     <link rel="stylesheet" href="bower_components/jquery-file-upload/css/jquery.fileupload-ui-noscript.css" />
     <link rel="stylesheet" href="bower_components/bootstrap/docs/assets/css/bootstrap.css" />
     <!-- endbower -->
-    <link rel="stylesheet" href="bower_components/jquery-ui/css/smoothness/jquery-ui.css" />
-    <link rel="stylesheet" href="bower_components/jquery-ui/css/smoothness/jquery-ui.theme.css" />
-    <link rel="stylesheet" href="bower_components/jquery-ui/addon/jquery-ui-timepicker-addon.css" />
+    <link rel="stylesheet" href="bower_components/jquery-ui/themes/smoothness/jquery-ui.css" />
+    <link rel="stylesheet" href="bower_components/jquery-ui/themes/smoothness/jquery.ui.theme.css" />
+    <link rel="stylesheet" href="bower_components/jqueryui-timepicker-addon/dist/jquery-ui-timepicker-addon.css" />
     <!-- endbuild -->
     <!-- build:css(app) styles/skins.css -->
+    <link rel="stylesheet" href="skins/styles/uniform.css" />
+    <link rel="stylesheet" href="skins/styles/datepicker.css" />
     <link rel="stylesheet" href="skins/styles/unicorn.main.css" />
     <link rel="stylesheet" href="skins/styles/unicorn.grey.css" class="skin-color" />  
     <!-- endbuild -->
@@ -42,7 +45,7 @@
     </div>
 
     <div id="footer" class="span12">
-      <p>2014 &copy; LocalAd 局域网本地广告 <a href="http://www.LocalAd.org.cn">http://www.LocalAd.org.cn</a></p>
+      <p>2014 &copy; LocalAd 局域网本地广告 <a href="http://www.LocalAd.com.cn">http://www.LocalAd.com.cn</a></p>
       <p>系统外观模板（Unicorn Admin Template）由 <a href="https://wrapbootstrap.com/user/diablo9983">diablo9983@gmail.com</a> 提供</p>
     </div>
 
@@ -51,6 +54,8 @@
     <script src="bower_components/jquery/jquery.js"></script>
     <script src="bower_components/lodash/dist/lodash.compat.js"></script>
     <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/jqgrid/js/i18n/grid.locale-en.js"></script>
+    <script src="bower_components/jqgrid/js/jquery.jqGrid.js"></script>
     <script src="bower_components/blueimp-tmpl/js/tmpl.js"></script>
     <script src="bower_components/blueimp-load-image/js/load-image.js"></script>
     <script src="bower_components/blueimp-load-image/js/load-image-ios.js"></script>
@@ -77,7 +82,7 @@
     <script src="bower_components/restangular/dist/restangular.js"></script>
     <!-- endbower -->
     <script src="bower_components/jquery-ui/ui/jquery-ui.js"></script>
-    <script src="bower_components/jquery-ui/i18n/jquery.ui.datepicker-zh-CN.js"></script>
+    <script src="bower_components/jquery-ui/ui/i18n/jquery.ui.datepicker-zh-CN.js"></script>
     <script src="bower_components/jqueryui-timepicker-addon/dist/jquery-ui-timepicker-addon.js"></script>
     <script src="bower_components/jqueryui-timepicker-addon/dist/i18n/jquery-ui-timepicker-zh-CN.js"></script>
     <!-- endbuild -->
@@ -111,6 +116,9 @@
     <script src="scripts/directives/fileupload.js"></script>
     <script src="scripts/directives/datepicker.js"></script>
     <script src="scripts/directives/datetimepicker.js"></script>
+    <script src="scripts/directives/literal.js"></script>
+    <script src="scripts/directives/jq-grid.js"></script>
+    <script src="scripts/controllers/screen-ad-filter.js"></script>
     <!-- endbuild -->
 </body>
 </html>

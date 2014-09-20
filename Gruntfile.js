@@ -296,6 +296,7 @@ module.exports = function (grunt) {
           src: [
             '*.{ico,png,txt}',
             '.htaccess',
+            '*.json',
             '*.html',
             'views/{,*/}*.html',
             'images/{,*/}*.{webp}',
@@ -310,6 +311,11 @@ module.exports = function (grunt) {
           expand: true,
           cwd: 'app/skins/styles/img',
           dest: '<%= yeoman.dist %>/styles/img',
+          src: ['*']
+        }, {
+          expand: true,
+          cwd: 'bower_components/query-ui/themes/smoothness/images',
+          dest: '<%= yeoman.dist %>/styles/images',
           src: ['*']
         }]
       },
