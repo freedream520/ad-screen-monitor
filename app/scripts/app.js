@@ -46,6 +46,10 @@ angular
       templateUrl: 'views/screen-ad-edit.html',
       controller: 'ScreenAdEditController'
     })
+    .when('/ad-report', {
+      templateUrl: 'views/ad-report.html',
+      controller: 'AdReportController'
+    })
     .otherwise({
       redirectTo: '/ad-screen'
     });

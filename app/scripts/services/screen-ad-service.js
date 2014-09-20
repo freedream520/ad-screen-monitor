@@ -78,6 +78,7 @@ angular.module('adScreenMonitor')
                     var id = data.id || '',
                         active = data.active || 0;
 
+                    createActionButton(buttons, { href: '#/ad-report' }, ['icon-eye-open', 'icon'], '查看广告投放报表');
                     createActionButton(buttons, { href: '#/screen-ad-edit/' + id }, ['icon-edit', 'icon'], '修改广告信息');
                     if(active * 1){
                         createActionButton(buttons, { id: id, active: '1' }, ['icon-pause', 'icon'], '暂停广告投放');
