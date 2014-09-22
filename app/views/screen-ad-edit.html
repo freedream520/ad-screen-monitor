@@ -68,7 +68,7 @@
                           <dl class="dl-horizontal" ng-repeat="item in screenGroups">
                             <dt style="text-align:left;"><label class="checkbox"><input type="checkbox" value="{{ item.id }}"> {{ item.title }}</label></dt>
                             <dd>
-                              <label class="checkbox span2" ng-repeat="sub in adScreens | filter: { group: item.id }"><input type="checkbox" value="{{ sub.id }}"> {{ sub.title }}</label>
+                              <label class="checkbox inline" ng-repeat="sub in adScreens | filter: { group: item.id }"><input type="checkbox" value="{{ sub.id }}"> {{ sub.title }}</label>
                             </dd>
                           </dl>
                         </div>

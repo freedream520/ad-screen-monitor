@@ -7,12 +7,18 @@
  * # jqGrid
  */
 angular.module('adScreenMonitor')
-  .directive('jqGrid', function (screenAdService) {
+  .directive('jqGrid', function () {
     return {
       restrict: 'A',
-      scope: true,
+      scope: {
+        options: '&'
+      },
       link: function postLink(scope, element, attrs) {
-        var options = screenAdService.getOptions(element), 
+        var getOptions = function(){ return {}; };
+        if(scope.options){
+          getOptions = scope.options();
+        }
+        var options = getOptions(element), 
             pager = '';
         if(attrs.url){
             options.url = attrs.url;
