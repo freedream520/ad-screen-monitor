@@ -9,17 +9,17 @@
  */
 angular.module('adScreenMonitor')
   .factory('screenGroupService', ['Restangular', function (Restangular) {
-    var groups = Restangular.all('screen-groups');
+    var collection = Restangular.all('screen-groups');
     return {
       getList: function () {
-        return groups.getList();
+        return collection.getList();
       },
       addItem: function(item){
-        return groups.post(item);
+        return collection.post(item);
       },
       updateItem: function(item){
-        var group = Restangular.copy(item);
-        return group.put();
+        var model = Restangular.copy(item);
+        return model.put();
       },
       getItem: function(){
         return {

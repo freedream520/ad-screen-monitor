@@ -12,7 +12,7 @@ describe('Service: screenAdService', function () {
   }));
 
   it('should do something', function () {
-    //expect(!!screenAdService).toBe(true);
+    expect(!!screenAdService).toBe(true);
   });
 
 });

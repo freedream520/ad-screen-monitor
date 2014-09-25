@@ -8,12 +8,17 @@
 </div>
 <div class="container-fluid">
     <div class="row-fluid" ng-controller="AdScreenFilterController">
-        <form action="#" method="get" class="form-inline">
-            <label>选择广告终端的分组：</label>
-            <select ng-model="adScreenFilterService.filters.group">
-                <option ng-repeat="item in items" value="{{ item.id }}">{{ item.title }}</option>
-            </select>
-        </form>
+        <div class="span10">
+            <form action="#" method="get" class="form-inline">
+                <label>广告终端分组：</label>
+                <select ng-model="filters.group">
+                    <option ng-repeat="item in items" value="{{ item.id }}">{{ item.title }}</option>
+                </select>
+            </form>
+        </div>
+        <div class="span2">
+            <button class="btn btn-primary" ng-click="showEditor();"><i class="icon-plus icon-white"></i> 添加广告终端</button>
+        </div>
     </div>
     <div class="widget-box">
         <div class="widget-title">
@@ -27,8 +32,18 @@
                         <th>名称</th><th>描述</th><th></th>
                     </tr>
                 </thead>
-                <tbody ng-controller="AdScreenListController">
-                    <tr ng-repeat="item in items | filter:adScreenFilterService.filters">
+                <tbody ng-controller="AdScreenEditController" ng-show="state.editing">
+                    <tr>
+                        <td><input type="text" ng-model="current.item.title" class="span2" /></td>
+                        <td><input type="text" ng-model="current.item.description" class="span4" /></td>
+                        <td>
+                            <button class="btn btn-primary btn-mini" ng-click="submitEdit();"><i class="icon-ok icon-white"></i> 确认</button>
+                            <button class="btn btn-mini" ng-click="cancelEdit();"><i class="icon-repeat icon-white"></i> 取消</button>
+                        </td>
+                    </tr>
+                </tbody>
+                <tbody>
+                    <tr ng-repeat="item in items | filter:filters">
                         <td>{{ item.title }}</td>
                         <td>{{ item.description }}</td>
                         <td>
@@ -37,19 +52,6 @@
                             <button class="btn btn-mini"><i class="icon-download-alt"></i> 下载HTML终端</button>
                             <button class="btn btn-primary btn-mini" ng-click="showEditor(item);"><i class="icon-pencil icon-white"></i> 修改</button>
                             <!--<button class="btn btn-danger btn-mini"><i class="icon-remove icon-white"></i> 删除</button>-->
-                            <button ng-show="$last" class="btn btn-primary btn-mini" ng-click="showEditor();">
-                                <i class="icon-plus icon-white"></i> 添加
-                            </button>
-                        </td>
-                    </tr>
-                </tbody>
-                <tbody ng-controller="AdScreenEditController" ng-show="state.editing">
-                    <tr>
-                        <td><input type="text" ng-model="current.item.title" class="span2" /></td>
-                        <td><input type="text" ng-model="current.item.description" class="span4" /></td>
-                        <td>
-                            <button class="btn btn-primary btn-mini" ng-click="submitEdit();"><i class="icon-ok icon-white"></i> 确认</button>
-                            <button class="btn btn-mini" ng-click="cancelEdit();"><i class="icon-repeat icon-white"></i> 取消</button>
                         </td>
                     </tr>
                 </tbody>

@@ -8,17 +8,16 @@
  * Controller of the adScreenMonitor
  */
 angular.module('adScreenMonitor')
-  .controller('AdScreenFilterController', function ($scope, screenGroupService, adScreenFilterService) {
-    $scope.adScreenFilterService = adScreenFilterService;
+  .controller('AdScreenFilterController', function ($scope, screenGroupService) {
     screenGroupService.getList()
     .then(function(items){
         $scope.items = items;
         if(items.length){
             var group = items[0].id;
-            if($scope.group){
-                group = $scope.group;
+            if($scope.current.group){
+                group = $scope.current.group;
             }
-            adScreenFilterService.filters.group = group;
+            $scope.filters.group = group;
         }
     });
   });
