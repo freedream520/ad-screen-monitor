@@ -16,6 +16,7 @@ angular.module('adScreenMonitor')
         }else{
             screenGroupService.addItem($scope.current.item);
         }
+        $scope.items = screenGroupService.getList();
     };
     $scope.cancelEdit = function(){ 
         $scope.state.editing = false; 
