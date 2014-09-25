@@ -9,14 +9,16 @@
  */
 angular.module('adScreenMonitor')
   .controller('AdScreenFilterController', function ($scope, screenGroupService, adScreenFilterService) {
-    var items = screenGroupService.getList();
-    $scope.items = items;
     $scope.adScreenFilterService = adScreenFilterService;
-    if(items.length){
-        var group = items[0].id;
-        if($scope.group){
-            group = $scope.group;
+    screenGroupService.getList()
+    .then(function(items){
+        $scope.items = items;
+        if(items.length){
+            var group = items[0].id;
+            if($scope.group){
+                group = $scope.group;
+            }
+            adScreenFilterService.filters.group = group;
         }
-        adScreenFilterService.filters.group = group;
-    }
+    });
   });

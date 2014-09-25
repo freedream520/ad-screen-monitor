@@ -12,7 +12,7 @@ angular.module('adScreenMonitor')
     var groups = Restangular.all('screen-groups');
     return {
       getList: function () {
-        return groups.getList().$object;
+        return groups.getList();
       },
       addItem: function(item){
         return groups.post(item);

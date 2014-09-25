@@ -12,11 +12,16 @@ angular.module('adScreenMonitor')
     $scope.submitEdit = function(){
         $scope.state.editing = false;
         if($scope.current.item.id){
-            screenGroupService.updateItem($scope.current.item);
+            screenGroupService.updateItem($scope.current.item)
+            .then(function(){
+                $scope.load();
+            });
         }else{
-            screenGroupService.addItem($scope.current.item);
+            screenGroupService.addItem($scope.current.item)
+            .then(function(){
+                $scope.load();
+            });
         }
-        $scope.items = screenGroupService.getList();
     };
     $scope.cancelEdit = function(){ 
         $scope.state.editing = false; 

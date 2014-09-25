@@ -1,8 +1,5 @@
 <div id="content-header">
     <h1>广告屏管理</h1>
-    <div class="btn-group">
-        <button class="btn btn-primary btn-mini" ng-click="showEditor();"><i class="icon-plus icon-white"></i></button>
-    </div>
 </div>
 <div id="breadcrumb">
     <a href="/" title="Go to Home" class="tip-bottom"><i class="icon-home"></i>首页</a>
@@ -10,6 +7,9 @@
     <a href="#/screen-group" class="current">终端组管理</a>
 </div>
 <div class="container-fluid">
+    <div class="row-fluid">
+        <button class="btn btn-primary" ng-click="showEditor();"><i class="icon-plus icon-white"></i> 添加广告终端组</button>
+    </div>
     <div class="widget-box">
         <div class="widget-title">
             <span class="icon"><i class="icon-th-list"></i></span>
@@ -22,21 +22,6 @@
                         <th>名称</th><th>描述</th><th></th>
                     </tr>
                 </thead>
-                <tbody ng-controller="ScreenGroupListController">
-                    <tr ng-repeat="item in items">
-                        <td>{{ item.title }}</td>
-                        <td>{{ item.description }}</td>
-                        <td>
-                            <a class="btn btn-mini" ng-href="#/ad-screen/{{ item.id }}"><i class="icon-eye-open"></i> 查看组中的广告终端</a>
-                            <!--<a class="btn btn-mini" ng-href="#/ad-report" target="_blank"><i class="icon-eye-open"></i> 查看广告投放报表</a>-->
-                            <button class="btn btn-primary btn-mini" ng-click="showEditor(item);"><i class="icon-pencil icon-white"></i> 修改</button>
-                            <!--<button class="btn btn-danger btn-mini"><i class="icon-remove icon-white"></i> 删除</button>-->
-                            <button ng-show="$last" class="btn btn-primary btn-mini" ng-click="showEditor();">
-                                <i class="icon-plus icon-white"></i> 添加
-                            </button>
-                        </td>
-                    </tr>
-                </tbody>
                 <tbody ng-controller="ScreenGroupEditController" ng-show="state.editing">
                     <tr>
                         <td><input type="text" ng-model="current.item.title" class="span2" /></td>
@@ -44,6 +29,21 @@
                         <td>
                             <button class="btn btn-primary btn-mini" ng-click="submitEdit();"><i class="icon-ok icon-white"></i> 确认</button>
                             <button class="btn btn-mini" ng-click="cancelEdit();"><i class="icon-repeat icon-white"></i> 取消</button>
+                        </td>
+                    </tr>
+                </tbody>
+                <tbody>
+                    <tr ng-repeat="item in items">
+                        <td>{{ item.title }}</td>
+                        <td>{{ item.description }}</td>
+                        <td>
+                            <a class="btn btn-mini" ng-href="#/ad-screen/{{ item.id }}"><i class="icon-eye-open"></i> 查看组中的广告终端</a>
+                            <!--<a class="btn btn-mini" ng-href="#/ad-report" target="_blank"><i class="icon-eye-open"></i> 查看广告投放报表</a>-->
+                            <button class="btn btn-primary btn-mini" ng-click="showEditor(item);"><i class="icon-pencil icon-white"></i> 修改</button>
+                            <!--<button class="btn btn-danger btn-mini"><i class="icon-remove icon-white"></i> 删除</button>
+                            <button ng-show="$last" class="btn btn-primary btn-mini" ng-click="showEditor();">
+                                <i class="icon-plus icon-white"></i> 添加
+                            </button>-->
                         </td>
                     </tr>
                 </tbody>

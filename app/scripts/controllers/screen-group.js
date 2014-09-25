@@ -16,10 +16,17 @@ angular.module('adScreenMonitor')
         item: {}
     };
     
+    $scope.load = function(){
+        screenGroupService.getList()
+        .then(function(items){
+            $scope.items = items;
+        });
+    };
     $scope.showEditor = function(item){
         var _ = window._;
         item = item || screenGroupService.getItem(0);
         $scope.current.item = _.clone(item);
         $scope.state.editing = true; 
     };
+    $scope.load();
   });
