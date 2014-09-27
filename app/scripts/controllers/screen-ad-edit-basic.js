@@ -8,31 +8,35 @@
  * Controller of the adScreenMonitor
  */
 angular.module('adScreenMonitor')
-  .controller('ScreenAdEditBasicController', function ($scope) {
-    var slotTypes = [
-        { name: 'carousel', description: '1#轮播位置' },
-        { name: 'fix', description: '2#固定位置' },
-        { name: 'scroll', description: '3#滚动位置' },
-    ];
-    var slotMaterielTypes = {
-        carousel: [ { name: 'image', description: '图片物料（宽高比4：3）'}, { name: 'video', description: 'MP4视频物料（宽高比4：3）'} ],
-        fix: [ { name: 'image', description: '图片物料（宽高比2：3）'} ],
-        scroll: [ { name: 'text', description: '文本广告（少于25字）'} ]
-    };
+  .controller('ScreenAdEditBasicController', function ($scope, enumService) {
+    var slotTypes = enumService.getSlotTypes();
+    var materielTypes = enumService.getMaterielTypes();
     var slotType = slotTypes[0].name;
-    var materielTypes = slotMaterielTypes[slotType];
-
-    $scope.current.item.slotType = slotType;
+    var materielType = materielTypes[0].name;
+    
+    $scope.progress = 0;
     $scope.slotTypes = slotTypes;
     $scope.materielTypes = materielTypes;
+    $scope.uploadService = '';
+    
+    $scope.current.item.slotType = slotType;
+    $scope.current.item.materielType = materielType;
 
     $scope.changeSlotType = function(){
-        var slotType = $scope.current.item.slotType;
-        $scope.materielTypes = slotMaterielTypes[slotType];
+        //$scope.current.item.materielType
+    };
+
+    $scope.uploadProgress = function(e, data){
+        console.log(e);
+        if(data && data.loaded && data.total){
+            $scope.progress = parseInt(data.loaded / data.total * 100, 10);
+        }
     };
 
     $scope.uploadFinished = function(e, data){
         console.log(e);
-        console.log(data);
+        if(data && data.result && data.result.files && data.result.files.length){
+            $scope.current.item.path = data.result.files[0];
+        }
     };
   });

@@ -17,6 +17,7 @@ angular.module('adScreenMonitor')
       link: function postLink(scope, element, attrs) {
         console.log(attrs);
         var options = {
+            autoUpload: true,
             dataType: 'json'
         };
 

@@ -12,4 +12,7 @@ angular.module('adScreenMonitor')
     $scope.current = {
         item: {}
     };
+    $scope.submitEdit = function(){
+        console.log($scope.current.item);
+    };
   });

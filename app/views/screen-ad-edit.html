@@ -18,29 +18,34 @@
                   <div class="control-group">
                     <label class="control-label">广告位置：</label>
                     <div class="controls">
-                      <select ng-model="current.item.slotType" ng-change="changeSlotType();">
-                        <option ng-repeat="item in slotTypes" value="{{ item.name }}">{{ item.description }}</option>
+                      <select ng-model="current.item.slotType" 
+                        ng-options="item.name as item.description for item in slotTypes" ng-change="changeSlotType();">
                       </select>
                     </div>
                   </div>
                   <div class="control-group">
                     <label class="control-label">物料类型：</label>
                     <div class="controls">
-                      <select>
-                        <option ng-repeat="item in materielTypes" value="{{ item.name }}">{{ item.description }}</option>
+                      <select id="materielType" ng-model="current.item.materielType"
+                        ng-options="item.name as item.description for item in materielTypes | filter: { slotType: current.item.slotType }">
                       </select>
                     </div>
                   </div>
                   <div class="control-group">
                     <label class="control-label">广告主题：</label>
                     <div class="controls">
-                        <input type="text" />
+                        <input type="text" ng-model="current.item.title" />
                     </div>
                   </div>
                   <div class="control-group" ng-hide="'scroll' === current.item.slotType">
                     <label class="control-label">上传物料：</label>
                     <div class="controls">
-                        <input type="file" fileupload data-url="" done="uploadFinished(e, data)" />
+                      <input type="text" ng-model="current.item.path" class="file" />
+                      <span class="btn btn-success fileinput-button" style="margin-right:0px;">
+                        <i class="icon-plus icon-white"></i><span>上传</span>
+                        <input type="file" name="files[]" fileupload data-url="{{ uploadService }}" progress="uploadProgress(e, data);" done="uploadFinished(e, data);" />
+                      </span>
+                      <div class="progress progress-success progress-striped"><div class="bar" ng-style="{ width: progress + '%' }"></div></div>
                     </div>
                   </div>
                 </form>
@@ -59,12 +64,12 @@
                   <div class="span12">
                     <div class="control-group">
                       <label class="control-label">投放目标：</label>
-                      <div class="controls">
-                        <div class="row">
-                          <div class="span1"><label class="checkbox"><input type="checkbox"> 全选</label></div>
-                          <div class="span1"><label class="checkbox span2"><input type="checkbox"> 反选</label></div>
+                      <div class="controls" checkboxs ng-model="current.item.screens">
+                        <div class="row checkboxs-ctrl">
+                          <div class="span1"><label class="checkbox"><input type="checkbox" class="checkAll"> 全选</label></div>
+                          <div class="span1"><label class="checkbox span2"><input type="checkbox" class="checkInverse"> 反选</label></div>
                         </div>
-                        <div class="row">
+                        <div class="row checkboxs-container">
                           <dl class="dl-horizontal" ng-repeat="item in screenGroups">
                             <dt style="text-align:left;"><label class="checkbox"><input type="checkbox" value="{{ item.id }}"> {{ item.title }}</label></dt>
                             <dd>
@@ -90,8 +95,8 @@
                     </div>
                     <div class="control-group">
                       <div class="controls">
-                        <label class="checkbox"><input type="checkbox"> 激活状态</label>
-                        <button class="btn">确认</button>
+                        <label class="checkbox"><input type="checkbox"  ng-model="current.item.active" ng-true-value="1" ng-false-value="0"> 激活状态</label>
+                        <button class="btn" ng-click="submitEdit();">确认</button>
                       </div>
                     </div>
                   </div>
