@@ -9,6 +9,15 @@
  */
 angular.module('adScreenMonitor')
   .controller('ScreenAdFilterController', function ($scope, screenGroupService, adScreenService) {
-    $scope.screenGroups = screenGroupService.getList();
-    $scope.adScreens = adScreenService.getList();
+    $scope.screenGroups = [];
+    $scope.adScreens = [];
+    
+    screenGroupService.getList()
+    .then(function(items){
+        $scope.screenGroups = items;
+    });
+    adScreenService.getList()
+    .then(function(items){
+        $scope.adScreens = items;
+    });
   });

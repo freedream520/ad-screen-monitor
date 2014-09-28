@@ -9,6 +9,22 @@
  */
 angular.module('adScreenMonitor')
   .controller('ScreenAdEditStrategyController', function ($scope, screenGroupService, adScreenService) {
-    $scope.screenGroups = screenGroupService.getList();
-    $scope.adScreens = adScreenService.getList();
+    $scope.screenGroups = [];
+    $scope.adScreens = [];
+    
+    screenGroupService.getList()
+    .then(function(items){
+        $scope.screenGroups = items;
+    });
+    adScreenService.getList()
+    .then(function(items){
+        $scope.adScreens = items;
+    });
+
+    $scope.changeScreenGroups = function(group){
+        $scope.$emit('parent-click', group);
+    };
+    $scope.changeAdScreens = function(scree){
+        $scope.$emit('child-click', scree);
+    };
   });

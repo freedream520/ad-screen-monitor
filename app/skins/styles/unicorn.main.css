@@ -1328,7 +1328,7 @@ form {
 	padding: 10px 0;
 }
 .form-horizontal input[type=text], .form-horizontal input[type=password], .form-horizontal textarea {
-	width: 80%;
+	/*width: 80%;*/
 }
 .form-horizontal .form-actions {
 	margin-top: 0;
@@ -1544,4 +1544,4 @@ form {
     padding: 0px 5px 0px 5px;
 }
 .controls .file{float:left;margin-right:10px;}
-.controls .progress{width:100%;clear:both;margin:5px 0px 0px 0px;}
+.controls .progress{width:50%;clear:both;margin:5px 0px 0px 0px;}

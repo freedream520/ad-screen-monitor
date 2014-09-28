@@ -164,6 +164,10 @@ module.exports = function (grunt) {
     wiredep: {
       app: {
         src: ['<%= yeoman.app %>/index.html'],
+        exclude: [
+          /jquery.fileupload-noscript.css/, 
+          /jquery.fileupload-ui-noscript.css/
+        ],
         ignorePath:  /\.\.\//
       }
     },
