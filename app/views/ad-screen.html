@@ -11,9 +11,7 @@
         <div class="span10">
             <form action="#" method="get" class="form-inline">
                 <label>广告终端分组：</label>
-                <select ng-model="filters.group">
-                    <option ng-repeat="item in items" value="{{ item.id }}">{{ item.title }}</option>
-                </select>
+                <select ng-model="filters.group" ng-options="item.id as item.title for item in items"></select>
             </form>
         </div>
         <div class="span2">

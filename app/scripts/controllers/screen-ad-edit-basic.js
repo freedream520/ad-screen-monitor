@@ -8,7 +8,7 @@
  * Controller of the adScreenMonitor
  */
 angular.module('adScreenMonitor')
-  .controller('ScreenAdEditBasicController', function ($scope, enumService) {
+  .controller('ScreenAdEditBasicController', function ($scope, enumService, settingsService) {
     var slotTypes = enumService.getSlotTypes();
     var materielTypes = enumService.getMaterielTypes();
     var slotType = slotTypes[0].name;
@@ -17,7 +17,7 @@ angular.module('adScreenMonitor')
     $scope.progress = 0;
     $scope.slotTypes = slotTypes;
     $scope.materielTypes = materielTypes;
-    $scope.uploadService = '';
+    $scope.uploadService = settingsService.getUploadService();
     
     $scope.current.item.slotType = slotType;
     $scope.current.item.materielType = materielType;

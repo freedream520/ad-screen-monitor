@@ -9,6 +9,8 @@
  */
 angular.module('adScreenMonitor')
   .controller('ScreenAdController', function ($scope) {
+    $scope.adFilters = {};
+
     var $ = window.$,
       _ = window._;
 

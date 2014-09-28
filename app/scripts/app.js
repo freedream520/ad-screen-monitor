@@ -10,12 +10,12 @@
  */
 angular
   .module('adScreenMonitor', ['ngRoute', 'restangular'])
+  .run(['Restangular', 'settingsService', function(Restangular, settingsService){
+    Restangular.setBaseUrl(settingsService.getAPIService());
+  }])
   .config(['$httpProvider', function($httpProvider){
     $httpProvider.defaults.useXDomain = true;
     delete $httpProvider.defaults.headers.common['X-Requested-With'];
-  }])
-  .config(['RestangularProvider', function(RestangularProvider){
-    RestangularProvider.setBaseUrl('http://127.0.0.1:8341/ad-screen/api');
   }])
   .config(['$locationProvider', function($locationProvider){
     $locationProvider.html5Mode(false);
