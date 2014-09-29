@@ -15,8 +15,10 @@ angular.module('adScreenMonitor')
         progress: '&'
       },
       link: function postLink(scope, element, attrs) {
+        var $ = window.$;
         console.log(attrs);
         var options = {
+            url: attrs.url || '',
             autoUpload: true,
             dataType: 'json'
         };
@@ -36,8 +38,7 @@ angular.module('adScreenMonitor')
                 });
             };
         }
-
-        element.fileupload(options); 
+        $(element).fileupload(options); 
       }
     };
   });

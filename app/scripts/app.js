@@ -9,7 +9,7 @@
  * Main module of the application.
  */
 angular
-  .module('adScreenMonitor', ['ngRoute', 'restangular'])
+  .module('adScreenMonitor', ['ngRoute', 'restangular', 'blueimp.fileupload'])//
   .run(['Restangular', 'settingsService', function(Restangular, settingsService){
     Restangular.setBaseUrl(settingsService.getAPIService());
   }])

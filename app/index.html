@@ -24,6 +24,61 @@
     <!-- endbuild -->
   </head>
   <body ng-controller="MainController">
+<!-- The template to display files available for upload -->
+<script id="template-upload" type="text/x-tmpl">
+{% for (var i=0, file; file=o.files[i]; i++) { %}
+    <tr class="template-upload fade">
+        <td>
+            <span class="preview"></span>
+        </td>
+        <td>
+            <p class="name">{%=file.name%}</p>
+            <strong class="error"></strong>
+        </td>
+        <td>
+            <p class="size">Processing...</p>
+            <div class="progress"></div>
+        </td>
+        <td>
+            {% if (!i && !o.options.autoUpload) { %}
+                <button class="start" disabled>Start</button>
+            {% } %}
+            {% if (!i) { %}
+                <button class="cancel">Cancel</button>
+            {% } %}
+        </td>
+    </tr>
+{% } %}
+</script>
+<!-- The template to display files available for download -->
+<script id="template-download" type="text/x-tmpl">
+{% for (var i=0, file; file=o.files[i]; i++) { %}
+    <tr class="template-download fade">
+        <td>
+            <span class="preview">
+                {% if (file.thumbnailUrl) { %}
+                    <a href="{%=file.url%}" title="{%=file.name%}" download="{%=file.name%}" data-gallery><img src="{%=file.thumbnailUrl%}"></a>
+                {% } %}
+            </span>
+        </td>
+        <td>
+            <p class="name">
+                <a href="{%=file.url%}" title="{%=file.name%}" download="{%=file.name%}" {%=file.thumbnailUrl?'data-gallery':''%}>{%=file.name%}</a>
+            </p>
+            {% if (file.error) { %}
+                <div><span class="error">Error</span> {%=file.error%}</div>
+            {% } %}
+        </td>
+        <td>
+            <span class="size">{%=o.formatFileSize(file.size)%}</span>
+        </td>
+        <td>
+            <button class="delete" data-type="{%=file.deleteType%}" data-url="{%=file.deleteUrl%}"{% if (file.deleteWithCredentials) { %} data-xhr-fields='{"withCredentials":true}'{% } %}>Delete</button>
+            <input type="checkbox" name="delete" value="1" class="toggle">
+        </td>
+    </tr>
+{% } %}
+</script>
     <div id="header">
       <h1><a href="/">LocalAd Admin</a></h1>   
     </div>
@@ -75,7 +130,6 @@
     <script src="bower_components/jquery-file-upload/js/jquery.fileupload-jquery-ui.js"></script>
     <script src="bower_components/jquery-file-upload/js/jquery.fileupload-angular.js"></script>
     <script src="bower_components/jquery-file-upload/js/jquery.iframe-transport.js"></script>
-    <script src="bower_components/bootstrap/docs/assets/js/bootstrap.js"></script>
     <script src="bower_components/angular-route/angular-route.js"></script>
     <script src="bower_components/restangular/dist/restangular.js"></script>
     <script src="bower_components/ecomfe-echarts/build/echarts-plain-original.js"></script>
@@ -85,6 +139,7 @@
     <script src="bower_components/jquery-ui/ui/i18n/jquery.ui.datepicker-zh-CN.js"></script>
     <script src="bower_components/jqueryui-timepicker-addon/dist/jquery-ui-timepicker-addon.js"></script>
     <script src="bower_components/jqueryui-timepicker-addon/dist/i18n/jquery-ui-timepicker-zh-CN.js"></script>
+    <script src="bower_components/bootstrap/docs/assets/js/bootstrap.js"></script>
     <!-- endbuild -->
 
     <!-- build:js({.tmp,app}) scripts/scripts.js -->
@@ -96,8 +151,8 @@
     <script src="scripts/services/screen-ad-service.js"></script>
     <script src="scripts/services/ad-screen-service.js"></script>
     <script src="scripts/services/enum-service.js"></script>
+    <script src="scripts/services/settings-service.js"></script>
     
-    <script src="scripts/directives/fileupload.js"></script>
     <script src="scripts/directives/datepicker.js"></script>
     <script src="scripts/directives/datetimepicker.js"></script>
     <script src="scripts/directives/jq-grid.js"></script>
@@ -117,7 +172,6 @@
     <script src="scripts/controllers/screen-ad-edit-basic.js"></script>
     <script src="scripts/controllers/screen-ad-edit-strategy.js"></script>
     <script src="scripts/controllers/screen-ad-filter.js"></script>
-    <script src="scripts/services/settings-service.js"></script>
     <!-- endbuild -->
 </body>
 </html>

@@ -41,13 +41,14 @@
                     <label class="control-label">上传物料：</label>
                     <div class="controls">
                       <input type="text" ng-model="current.item.path" class="file" />
-                      <div class="btn-group">
+                      <div class="fileupload-buttonbar">
                         <span class="btn btn-success fileinput-button" style="margin-right:0px;">
                           <i class="icon-plus icon-white"></i><span>上传</span>
-                          <input type="file" name="files[]" fileupload data-url="{{ uploadService }}" progress="uploadProgress(e, data);" done="uploadFinished(e, data);" />
+                          <input type="file" name="files[]" file-upload data-auto-upload="true" data-upload-template-id="" data-url="{{ uploadService }}" data-progress="uploadProgress(e, data);" data-done="uploadFinished(e, data);" />
                         </span>
                       </div>
                       <div class="progress progress-success progress-striped"><div class="bar" ng-style="{ width: progress + '%' }"></div></div>
+                      <div class="files"></div>  
                     </div>
                   </div>
                 </form>
