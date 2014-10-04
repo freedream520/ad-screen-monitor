@@ -8,7 +8,7 @@
  * Factory in the adScreenMonitor.
  */
 angular.module('adScreenMonitor')
-  .factory('screenAdService', ['Restangular', function (Restangular) {
+  .factory('screenAdService', ['$q', 'Restangular', function ($q, Restangular) {
     var collection = Restangular.all('screen-ads');
     return {
       getList: function () {
@@ -21,11 +21,22 @@ angular.module('adScreenMonitor')
         var model = Restangular.copy(item);
         return model.put();
       },
-      getItem: function(){
-        return {
-          title: '',
-          description: ''
-        };
+      getItem: function(id){
+        if(id){
+          var item = Restangular.one('screen-ads', id);
+          return item.get();
+        }else{
+          var deferred = $q.defer();
+          deferred.resolve({
+            title: '',
+            description: ''
+          });
+          return deferred.promise;
+        }
+      },
+      execute: function(spu, ctrl){
+        var item = Restangular.one('screen-ads', id);
+        return item.put(ctrl, {});
       }
     };
   }]);

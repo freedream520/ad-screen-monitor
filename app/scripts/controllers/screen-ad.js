@@ -8,12 +8,22 @@
  * Controller of the adScreenMonitor
  */
 angular.module('adScreenMonitor')
-  .controller('ScreenAdController', function ($scope) {
+  .controller('ScreenAdController', function ($scope, screenAdService) {
     $scope.adFilters = {};
 
     var $ = window.$,
       _ = window._;
 
+    function activate(spu){
+        screenAdService.execute(spu, 'start').then(function(){
+            angular.element('#adsTable').trigger('reloadGrid'); 
+        });
+    }
+    function suspend(spu){
+        screenAdService.execute(spu, 'pause').then(function(){
+            angular.element('#adsTable').trigger('reloadGrid'); 
+        });
+    }
     function createActionButton(buttons, attrs, classes, title){
         var arr = [];
         for(var key in attrs){
@@ -31,23 +41,6 @@ angular.module('adScreenMonitor')
         };
         var compiled = _.template(template);
         buttons.push(compiled(data));
-    }
-    function executeControl(data){
-      console.log(data);
-    }
-    function activate(spu){
-        var data = {
-            spu: spu,
-            type: 'start'
-        };
-        executeControl(data);
-    }
-    function suspend(spu){
-        var data = {
-            spu: spu,
-            type: 'pause'
-        };
-        executeControl(data);
     }
     
     $scope.getGridOptions = function(){

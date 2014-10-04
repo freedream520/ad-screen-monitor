@@ -76,11 +76,15 @@ angular.module('adScreenMonitor')
           items.map(function(item){
             dict[item] = 1;
           });
+        };
+
+        scope.$watch(element.find('.checkboxs-container dl dd :checkbox').size(), function(){
+          console.log(element.find('.checkboxs-container dl dd :checkbox').size());
           element.find('.checkboxs-container dl dd :checkbox').map(function(){
             this.checked = dict.hasOwnProperty(this.value);
           });
           setCheckAll();
-        };
+        })
       }
     };
   });
