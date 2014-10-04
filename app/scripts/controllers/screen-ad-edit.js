@@ -8,11 +8,11 @@
  * Controller of the adScreenMonitor
  */
 angular.module('adScreenMonitor')
-  .controller('ScreenAdEditController', function ($scope) {
+  .controller('ScreenAdEditController', function ($scope, screenAdService) {
     $scope.current = {
         item: {}
     };
     $scope.submitEdit = function(){
-        console.log($scope.current.item);
+        screenAdService.addItem($scope.current.item);
     };
   });

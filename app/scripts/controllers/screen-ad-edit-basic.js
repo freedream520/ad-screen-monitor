@@ -26,17 +26,7 @@ angular.module('adScreenMonitor')
         //$scope.current.item.materielType
     };
 
-    $scope.uploadProgress = function(e, data){
-        console.log(e);
-        if(data && data.loaded && data.total){
-            $scope.progress = parseInt(data.loaded / data.total * 100, 10);
-        }
-    };
-
-    $scope.uploadFinished = function(e, data){
-        console.log(e);
-        if(data && data.result && data.result.files && data.result.files.length){
-            $scope.current.item.path = data.result.files[0];
-        }
-    };
+    $scope.$on('fileuploaddone', function(e, data){
+        $scope.current.item.path = data.result.files[0].path;
+    });
   });

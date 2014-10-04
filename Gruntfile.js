@@ -165,15 +165,15 @@ module.exports = function (grunt) {
       app: {
         src: ['<%= yeoman.app %>/index.html'],
         exclude: [
-          //blueimp-tmpl/,
-          //blueimp-load-image/,
-          //blueimp-canvas-to-blob/,
-          //jquery.postmessage-transport.js/,
-          //jquery.xdr-transport.js/,
+          /blueimp-tmpl/,
+          /blueimp-load-image/,
+          /blueimp-canvas-to-blob/,
+          /jquery.postmessage-transport.js/,
+          /jquery.xdr-transport.js/,
           //jquery.fileupload-process.js/,
-          //jquery.fileupload-image.js/,
-          //jquery.fileupload-ui.js/,
-          //jquery.fileupload-jquery-ui.js/,
+          /jquery.fileupload-image.js/,
+          /jquery.fileupload-ui.js/,
+          /jquery.fileupload-jquery-ui.js/,
           /jquery.fileupload-noscript.css/, 
           /jquery.fileupload-ui-noscript.css/
         ],

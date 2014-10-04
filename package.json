@@ -1,7 +1,14 @@
 {
   "name": "ad-screen-monitor",
   "version": "0.1.0",
-  "dependencies": {},
+  "homepage": "https://github.com/com-localad/ad-screen",
+  "authors": [
+    "周培公 <peigong@foxmail.com>"
+  ],
+  "description": "互联网广告屏管理控制器",
+  "license": "MIT",
+  "dependencies": {
+  },
   "devDependencies": {
     "grunt": "^0.4.1",
     "grunt-autoprefixer": "^0.7.3",

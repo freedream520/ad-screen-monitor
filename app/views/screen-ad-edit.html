@@ -34,21 +34,26 @@
                   <div class="control-group">
                     <label class="control-label">广告主题：</label>
                     <div class="controls">
-                        <input type="text" ng-model="current.item.title" />
+                        <input type="text" ng-model="current.item.title" class="span5" />
                     </div>
                   </div>
                   <div class="control-group" ng-hide="'scroll' === current.item.slotType">
                     <label class="control-label">上传物料：</label>
                     <div class="controls">
-                      <input type="text" ng-model="current.item.path" class="file" />
-                      <div class="fileupload-buttonbar">
-                        <span class="btn btn-success fileinput-button" style="margin-right:0px;">
+                      <div class="fileupload-buttonbar" data-auto-upload="true" data-file-upload="options" data-ng-class="{'fileupload-processing': processing() || loadingFiles}">
+                        <input type="text" ng-model="current.item.path" class="file span5" />
+                        <span class="btn btn-success fileinput-button">
                           <i class="icon-plus icon-white"></i><span>上传</span>
-                          <input type="file" name="files[]" file-upload data-auto-upload="true" data-upload-template-id="" data-url="{{ uploadService }}" data-progress="uploadProgress(e, data);" data-done="uploadFinished(e, data);" />
+                          <input type="file" name="files[]" />
                         </span>
+                        <!-- The global progress state -->
+                        <div class="col-lg-5 fade" data-ng-class="{in: active()}">
+                            <!-- The global progress bar -->
+                            <div class="progress progress-striped active" data-file-upload-progress="progress()"><div class="progress-bar progress-bar-success" data-ng-style="{width: num + '%'}"></div></div>
+                            <!-- The extended global progress state -->
+                            <div class="progress-extended">&nbsp;</div>
+                        </div>
                       </div>
-                      <div class="progress progress-success progress-striped"><div class="bar" ng-style="{ width: progress + '%' }"></div></div>
-                      <div class="files"></div>  
                     </div>
                   </div>
                 </form>
