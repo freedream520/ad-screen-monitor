@@ -1,0 +1,14 @@
+<div>
+  <div class="row checkboxs-ctrl">
+    <div class="span1"><label class="checkbox"><input type="checkbox" class="checkAll"> 全选</label></div>
+    <div class="span1"><label class="checkbox span2"><input type="checkbox" class="checkInverse"> 反选</label></div>
+  </div>
+  <div class="row checkboxs-container">
+    <dl data-id="{{ item.id }}" class="dl-horizontal" ng-repeat="item in branches">
+      <dt style="text-align:left;"><label class="checkbox"><input type="checkbox" ng-checked="{{ item.checked }}" value="{{ item.id }}" ng-click="changeScreenGroups(item);"> {{ item.title }}</label></dt>
+      <dd>
+        <label class="checkbox inline" ng-repeat="sub in leaves | filter: { group: item.id }"><input type="checkbox" ng-checked="{{ sub.checked }}" value="{{ sub.id }}" ng-click="changeAdScreens(sub);"> {{ sub.title }}</label>
+      </dd>
+    </dl>
+  </div>
+<div>

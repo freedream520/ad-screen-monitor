@@ -19,17 +19,37 @@ angular.module('adScreenMonitor')
 
     var slotTypes = enumService.getSlotTypes();
     var materielTypes = enumService.getMaterielTypes();
-    $scope.slotTypes = slotTypes;
     $scope.materielTypes = materielTypes;
-    
+
+    $scope.types = {
+        slot: slotTypes,
+        materiel: []
+    };
+
+    var setMaterielTypes = $scope.setMaterielTypes = function(slotType){
+        var item, items = [];
+        $scope.current.item.slotType = $scope.current.item.slotType || (!!slotTypes.length ? slotTypes[0].name : '');
+        slotType = slotType || $scope.current.item.slotType;
+        for(var i = 0; i < materielTypes.length; i++){
+            item = materielTypes[i];
+            if(slotType === item.slotType){
+                items.push(item);
+            }
+        }
+        if(items.length){
+            $scope.current.item.materielType = items[0].name;
+        }
+        $scope.types.materiel = items;
+    };
+
+    setMaterielTypes();
     screenAdService.getItem(aid).then(function(item){
-        if(!item.slotType){
-            item.slotType = slotTypes[0].name;
-        }
-        if(!item.materielType){
-            item.materielType = materielTypes[0].name;
-        }
         $scope.current.item = item;
+        setMaterielTypes(item.slotType);
+    });
+
+    $scope.$on('fileuploaddone', function(e, data){
+        $scope.current.item.path = data.result.files[0].path;
     });
 
     $scope.submitEdit = function(){

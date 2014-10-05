@@ -13,13 +13,13 @@
             <h5>基本信息</h5>
         </div>
         <div class="widget-content">
-            <div class="row" ng-controller="ScreenAdEditBasicController">
+            <div class="row">
                 <form class="form-horizontal">
                   <div class="control-group">
                     <label class="control-label">广告位置：</label>
                     <div class="controls">
                       <select ng-model="current.item.slotType" 
-                        ng-options="item.name as item.description for item in slotTypes" ng-change="changeSlotType();">
+                        ng-options="item.name as item.description for item in types.slot" ng-change="setMaterielTypes();">
                       </select>
                     </div>
                   </div>
@@ -27,7 +27,7 @@
                     <label class="control-label">物料类型：</label>
                     <div class="controls">
                       <select id="materielType" ng-model="current.item.materielType"
-                        ng-options="item.name as item.description for item in materielTypes | filter: { slotType: current.item.slotType }">
+                        ng-options="item.name as item.description for item in types.materiel">
                       </select>
                     </div>
                   </div>
@@ -67,50 +67,35 @@
         </div>
         <div class="widget-content nopadding">
           <div class="row">
-            <div ng-controller="ScreenAdEditStrategyController">
-                <form class="form-horizontal">
-                  <div class="span12">
-                    <div class="control-group">
-                      <label class="control-label">投放目标：</label>
-                      <div class="controls" checkboxs ng-model="current.item.screens">
-                        <div class="row checkboxs-ctrl">
-                          <div class="span1"><label class="checkbox"><input type="checkbox" class="checkAll"> 全选</label></div>
-                          <div class="span1"><label class="checkbox span2"><input type="checkbox" class="checkInverse"> 反选</label></div>
-                        </div>
-                        <div class="row checkboxs-container">
-                          <dl data-id="{{ item.id }}" class="dl-horizontal" ng-repeat="item in screenGroups">
-                            <dt style="text-align:left;"><label class="checkbox"><input type="checkbox" value="{{ item.id }}" ng-click="changeScreenGroups(item);"> {{ item.title }}</label></dt>
-                            <dd>
-                              <label class="checkbox inline" ng-repeat="sub in adScreens | filter: { group: item.id }"><input type="checkbox" value="{{ sub.id }}" ng-click="changeAdScreens(sub);"> {{ sub.title }}</label>
-                            </dd>
-                          </dl>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="span6">
-                    <div class="control-group">
-                      <label class="control-label">开始投放：</label>
-                      <div class="controls">
-                        <input datetimepicker readonly ng-model="current.item.start" type="text" class="span3" />
-                      </div>
-                    </div>
-                    <div class="control-group">
-                      <label class="control-label">结束投放：</label>
-                      <div class="controls">
-                          <input datetimepicker readonly ng-model="current.item.end" type="text" class="span3" />
-                      </div>
-                    </div>
-                    <div class="control-group">
-                      <div class="controls">
-                        <label class="checkbox"><input type="checkbox" ng-model="current.item.active" ng-true-value="1" ng-false-value="0"> 激活状态</label>
-                        <button class="btn" ng-click="submitEdit();">确认</button>
-                      </div>
-                    </div>
-                  </div>
-                </form>
+            <form class="form-horizontal">
+              <div class="span12">
+                <div class="control-group">
+                  <label class="control-label">投放目标：</label>
+                  <div class="controls" checkboxs ng-model="current.item.screens"></div>
+                </div>
               </div>
-            </div>
+              <div class="span6">
+                <div class="control-group">
+                  <label class="control-label">开始投放：</label>
+                  <div class="controls">
+                    <input datetimepicker readonly ng-model="current.item.start" type="text" class="span3" />
+                  </div>
+                </div>
+                <div class="control-group">
+                  <label class="control-label">结束投放：</label>
+                  <div class="controls">
+                      <input datetimepicker readonly ng-model="current.item.end" type="text" class="span3" />
+                  </div>
+                </div>
+                <div class="control-group">
+                  <div class="controls">
+                    <label class="checkbox"><input type="checkbox" ng-model="current.item.active" ng-true-value="1" ng-false-value="0"> 激活状态</label>
+                    <button class="btn" ng-click="submitEdit();">确认</button>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
         </div>
     </div>
 </div>
