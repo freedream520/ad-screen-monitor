@@ -106,7 +106,7 @@ angular.module('adScreenMonitor')
             page: 1
           }).trigger('reloadGrid');
         });
-        scope.$on('reset', function(e, data){
+        scope.$on('reset', function(){
           element.jqGrid('setGridParam', { url: attrs.url, page: 1 }).trigger('reloadGrid');
         });
       }
