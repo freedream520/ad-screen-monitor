@@ -44,8 +44,12 @@ angular.module('adScreenMonitor')
         });
 
     });
+
     $scope.submitSearch = function(){
         $scope.$emit('search', $scope.adFilters);
+    };
+    $scope.resetList = function(){
+        $scope.$emit('reset');
     };
 
     $scope.$on('execute', function(e, data){

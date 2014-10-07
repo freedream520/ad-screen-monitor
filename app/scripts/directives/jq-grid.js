@@ -99,11 +99,15 @@ angular.module('adScreenMonitor')
         if(pager){
             element.jqGrid('navGrid', pager, { edit: false, add: false, del: false});
         }
+
         scope.$on('search', function(e, data){
           element.jqGrid('setGridParam', { 
             url: attrs.url + '?screen=' + data.screen + '&active=' + data.active,
             page: 1
           }).trigger('reloadGrid');
+        });
+        scope.$on('reset', function(e, data){
+          element.jqGrid('setGridParam', { url: attrs.url, page: 1 }).trigger('reloadGrid');
         });
       }
     };
