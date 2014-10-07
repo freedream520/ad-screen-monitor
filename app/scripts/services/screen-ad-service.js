@@ -36,7 +36,7 @@ angular.module('adScreenMonitor')
       },
       execute: function(id, ctrl){
         var item = Restangular.one('screen-ads', id);
-        return item.put(ctrl, {});
+        return item.put({ ctrl: ctrl });
       }
     };
   }]);

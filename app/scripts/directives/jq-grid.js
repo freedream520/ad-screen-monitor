@@ -27,7 +27,7 @@ angular.module('adScreenMonitor')
                     arr.push([key, attrs[key]].join('='));
                 }
             }
-            var template = '<a <%= attrs %> class="<%= classes %>" data-toggle="tooltip" data-placement="top" title="<%= title %>"></a>';
+            var template = '<a <%= attrs %> class="<%= classes %>" data-toggle="tooltip" data-placement="left" title="<%= title %>"></a>';
             classes.push('action');
             classes.push('glyphicon');
             var data = {
@@ -67,13 +67,13 @@ angular.module('adScreenMonitor')
                             }
                             element.jqGrid('setRowData', ids[i], { action: buttons.join('') });
                         }
-                        $('span[active=0]', element).click(function(){
+                        $('a[active=0]', element).click(function(){
                             activate($(this).attr('id'));
                         });
-                        $('span[active=1]', element).click(function(){
+                        $('a[active=1]', element).click(function(){
                             suspend($(this).attr('id'));
                         });
-                        $('span[data-toggle="tooltip"]').tooltip({});
+                        $('a[data-toggle="tooltip"]').tooltip({});
                     },
                     width: '100%',
                     height: '100%',
