@@ -8,85 +8,49 @@
  * Controller of the adScreenMonitor
  */
 angular.module('adScreenMonitor')
-  .controller('ScreenAdController', function ($scope, screenAdService) {
-    $scope.adFilters = {};
+  .controller('ScreenAdController', function ($scope, screenGroupService, adScreenService, screenAdService) {
+    $scope.adFilters = { active: '1' };
+    $scope.screenFilters = {};
 
-    var $ = window.$,
-      _ = window._;
+    $scope.screenGroups = [];
+    $scope.adScreens = [];
+    $scope.groupScreens = [];
 
-    function activate(spu){
-        screenAdService.execute(spu, 'start').then(function(){
-            angular.element('#adsTable').trigger('reloadGrid'); 
-        });
-    }
-    function suspend(spu){
-        screenAdService.execute(spu, 'pause').then(function(){
-            angular.element('#adsTable').trigger('reloadGrid'); 
-        });
-    }
-    function createActionButton(buttons, attrs, classes, title){
-        var arr = [];
-        for(var key in attrs){
-            if(attrs.hasOwnProperty(key)){
-                arr.push([key, attrs[key]].join('='));
+    var setGroupScreens = $scope.setGroupScreens = function(){
+        var item, items = [], group = $scope.screenFilters.group;
+        for(var i = 0; i < $scope.adScreens.length; i++){
+            item = $scope.adScreens[i];
+            if(group === item.group){
+                items.push(item);
             }
         }
-        var template = '<a <%= attrs %> class="<%= classes %>" data-toggle="tooltip" data-placement="top" title="<%= title %>"></a>';
-        classes.push('action');
-        classes.push('glyphicon');
-        var data = {
-            title: title,
-            attrs: arr.join(' '),
-            classes: classes.join(' ')
-        };
-        var compiled = _.template(template);
-        buttons.push(compiled(data));
-    }
-    
-    $scope.getGridOptions = function(){
-        return function(element){
-            return {
-                colNames:['id', '广告主题', '开始投放', '结束投放', '', 'active'],
-                colModel:[
-                    {name:'id', hidden: true },
-                    {name:'title', index:'title', width:500, align:'left' },
-                    {name:'start', index:'start', width:120, align:'center' },
-                    {name:'end', index:'end', width:120, align:'center' },
-                    {name:'action', index:'action', width:100, align:'center' },
-                    {name:'active', index:'active', hidden: true }
-                ],
-                loadComplete: function(){
-                    var i, data, ids = element.jqGrid('getDataIDs');
-                    for(i = 0; i < ids.length; i++){
-                        data = element.jqGrid('getRowData', ids[i]);
-                        var buttons = [];
-                        var id = data.id || '',
-                            active = data.active || 0;
-
-                        //createActionButton(buttons, { href: '#/ad-report' }, ['icon-eye-open', 'icon'], '查看广告投放报表');
-                        createActionButton(buttons, { href: '#/screen-ad-edit/' + id }, ['icon-edit', 'icon'], '修改广告信息');
-                        if(active * 1){
-                            createActionButton(buttons, { id: id, active: '1' }, ['icon-pause', 'icon'], '暂停广告投放');
-                        }else{
-                            createActionButton(buttons, { id: id, active: '0' }, ['icon-play', 'icon'], '激活广告投放');
-                        }
-                        element.jqGrid('setRowData', ids[i], { action: buttons.join('') });
-                    }
-                    $('span[active=0]', element).click(function(){
-                        activate($(this).attr('id'));
-                    });
-                    $('span[active=1]', element).click(function(){
-                        suspend($(this).attr('id'));
-                    });
-                    $('span[data-toggle="tooltip"]').tooltip({});
-                },
-                width: '100%',
-                height: '100%',
-                rowNum: 20,
-                rowList: [20, 30, 50],
-                viewrecords: false,
-                hidegrid: false
-            };
-        };
+        $scope.groupScreens = items;
+        if(items.length){
+            $scope.adFilters.screen = items[0].id;
+        }
     };
+    
+    screenGroupService.getList()
+    .then(function(items){
+        $scope.screenGroups = items;
+        if(items.length){
+            $scope.screenFilters.group = items[0].id;
+        }
+        setGroupScreens();
+        adScreenService.getList()
+        .then(function(items){
+            $scope.adScreens = items;
+            setGroupScreens();
+        });
+
+    });
+    $scope.submitSearch = function(){
+        $scope.$emit('search', $scope.adFilters);
+    };
+
+    $scope.$on('execute', function(e, data){
+        screenAdService.execute(data.id, data.action).then(function(){
+            angular.element('#adsTable').trigger('reloadGrid'); 
+        });
+    });
   });
