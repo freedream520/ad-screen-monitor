@@ -45,9 +45,11 @@
                         <td>{{ item.title }}</td>
                         <td>{{ item.description }}</td>
                         <td>
-                            <a class="btn btn-mini" ng-href="http://www.localad.com.cn/ad-screen/dist/" target="_blank"><i class="icon-eye-open"></i> 查看终端的展示效果</a>
-                            <!--<a class="btn btn-mini" ng-href="#/ad-report" target="_blank"><i class="icon-eye-open"></i> 查看广告投放报表</a>-->
+                            <a class="btn btn-mini" ng-href="{{ screenService }}/{{ item.id }}" target="_blank"><i class="icon-eye-open"></i> 获取终端HTML地址</a>
+                            <!--
+                            <a class="btn btn-mini" ng-href="#/ad-report" target="_blank"><i class="icon-eye-open"></i> 查看广告投放报表</a>
                             <button class="btn btn-mini"><i class="icon-download-alt"></i> 下载HTML终端</button>
+                            -->
                             <button class="btn btn-primary btn-mini" ng-click="showEditor(item);"><i class="icon-pencil icon-white"></i> 修改</button>
                             <!--<button class="btn btn-danger btn-mini"><i class="icon-remove icon-white"></i> 删除</button>-->
                         </td>

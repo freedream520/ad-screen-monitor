@@ -13,6 +13,9 @@ angular.module('adScreenMonitor')
 
     // Public API here
     return {
+      getScreenService: function(){
+        return root;
+      },
       getAPIService: function () {
         return [root, 'api'].join('/');
       },

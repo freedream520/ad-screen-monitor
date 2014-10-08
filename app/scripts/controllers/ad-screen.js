@@ -8,7 +8,7 @@
  * Controller of the adScreenMonitor
  */
 angular.module('adScreenMonitor')
-  .controller('AdScreenController', function ($scope, $routeParams, adScreenService) {
+  .controller('AdScreenController', function ($scope, $routeParams, settingsService, adScreenService) {
     var group = 0;
     if($routeParams.hasOwnProperty('group')){
         group = $routeParams.group;
@@ -20,7 +20,8 @@ angular.module('adScreenMonitor')
         item: {},
         group: group
     };
-    $scope.filters = {};    
+    $scope.filters = {};
+    $scope.screenService = settingsService.getScreenService();
     
     $scope.load = function(){
         adScreenService.getList()
