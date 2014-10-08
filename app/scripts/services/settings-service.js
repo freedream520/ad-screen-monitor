@@ -9,21 +9,21 @@
  */
 angular.module('adScreenMonitor')
   .factory('settingsService', function () {
-    var root = 'http://127.0.0.1:8341/ad-screen';
+    var root = 'http://127.0.0.1:8341';
 
     // Public API here
     return {
-      getScreenService: function(){
+      getStaticService: function(){
         return root;
       },
-      getAPIService: function () {
-        return [root, 'api'].join('/');
+      getScreenService: function(){
+        return [root, 'ad-screen'].join('/');
       },
-      getStaticService: function(){
-        return [root, 'static'].join('/');
+      getAPIService: function () {
+        return [root, 'ad-screen/api'].join('/');
       },
       getUploadService: function(){
-        return [root, 'api', 'upload'].join('/');
+        return [root, 'ad-screen/api/upload'].join('/');
       }
     };
   });
