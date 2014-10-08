@@ -8,13 +8,15 @@
  * Controller of the adScreenMonitor
  */
 angular.module('adScreenMonitor')
-  .controller('ScreenAdController', function ($scope, screenGroupService, adScreenService, screenAdService) {
+  .controller('ScreenAdController', function ($scope, settingsService, screenGroupService, adScreenService, screenAdService) {
     $scope.adFilters = { active: '1' };
     $scope.screenFilters = {};
 
     $scope.screenGroups = [];
     $scope.adScreens = [];
     $scope.groupScreens = [];
+
+    $scope.jqGridUrl = [settingsService.getAPIService(), 'screen-ads'].join('/');
 
     var setGroupScreens = $scope.setGroupScreens = function(){
         var item, items = [], group = $scope.screenFilters.group;
