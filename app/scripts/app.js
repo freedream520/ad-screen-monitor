@@ -15,6 +15,9 @@ angular
   }])
   .run(['fileUpload', 'settingsService', function(fileUpload, settingsService){
     angular.extend(fileUpload.defaults, {
+      //dataType: 'jsonp',
+      //maxFileSize: 5e9,
+      //acceptFileTypes: /(\.|\/)(gif|jpe?g|png|mp4)$/i,
       url: settingsService.getUploadService()
     });
   }])

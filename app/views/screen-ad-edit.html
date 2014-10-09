@@ -37,7 +37,7 @@
                         <input type="text" ng-model="current.item.title" class="span5" />
                     </div>
                   </div>
-                  <div class="control-group" ng-hide="'scroll' === current.item.slotType">
+                  <div class="control-group" ng-if="current.item.slotType !== 'scroll'">
                     <label class="control-label">上传物料：</label>
                     <div class="controls">
                       <div class="fileupload-buttonbar" data-auto-upload="true" data-file-upload="options" data-ng-class="{'fileupload-processing': processing() || loadingFiles}">

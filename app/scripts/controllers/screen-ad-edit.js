@@ -8,7 +8,7 @@
  * Controller of the adScreenMonitor
  */
 angular.module('adScreenMonitor')
-  .controller('ScreenAdEditController', function ($scope, $location, $routeParams, enumService, screenAdService) {
+  .controller('ScreenAdEditController', function ($scope, $window, $routeParams, enumService, screenAdService) {
     var aid = 0;
     if($routeParams.hasOwnProperty('aid')){
         aid = $routeParams.aid;
@@ -36,9 +36,7 @@ angular.module('adScreenMonitor')
                 items.push(item);
             }
         }
-        if(items.length){
-            $scope.current.item.materielType = items[0].name;
-        }
+        $scope.current.item.materielType = $scope.current.item.materielType || (!!items.length ? items[0].name : '');
         $scope.types.materiel = items;
     };
 
@@ -59,6 +57,6 @@ angular.module('adScreenMonitor')
         }else{
             screenAdService.addItem(item);
         }
-        $location.path('/screen-ad');
+        $window.location.href = '#/screen-ad';
     };
   });

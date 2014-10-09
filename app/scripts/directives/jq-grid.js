@@ -7,13 +7,28 @@
  * # jqGrid
  */
 angular.module('adScreenMonitor')
-  .directive('jqGrid', function () {
+  .directive('jqGrid', function (enumService) {
     var $ = window.$,
       _ = window._;
 
     return {
       restrict: 'A',
       link: function postLink(scope, element, attrs) {
+        var arrSlotTypes = enumService.getSlotTypes(),
+            arrMaterielTypes = enumService.getMaterielTypes();
+        var i, name, slotTypes = {}, materielTypes = {};
+        for(i = 0; i < arrSlotTypes.length; i++){
+            name = arrSlotTypes[i].name;
+            if(name){
+                slotTypes[name] = arrSlotTypes[i].description;
+            }
+        }
+        for(i = 0; i < arrMaterielTypes.length; i++){
+            name = arrMaterielTypes[i].name;
+            if(name){
+                materielTypes[name] = arrMaterielTypes[i].description;
+            }
+        }
         function activate(id){
           scope.$emit('execute', { id: id, action: 'start'});
         }
@@ -38,16 +53,28 @@ angular.module('adScreenMonitor')
             var compiled = _.template(template);
             buttons.push(compiled(data));
         }
+        function slotTypeFormatter ( cellvalue, options, rowObject ){
+            console.log(options);
+            console.log(rowObject);
+            return slotTypes.hasOwnProperty(cellvalue) ? slotTypes[cellvalue] : '未定义';
+        }
+        function materielTypeFormatter ( cellvalue, options, rowObject ){
+            console.log(options);
+            console.log(rowObject);
+            return materielTypes.hasOwnProperty(cellvalue) ? materielTypes[cellvalue] : '未定义';
+        }
         function getGridOptions(){
             return function(element){
                 return {
-                    colNames:['id', '广告主题', '开始投放', '结束投放', '', 'active'],
+                    colNames:['id', '广告主题', '广告位置', '物料类型', '开始投放', '结束投放', '', 'active'],
                     colModel:[
                         {name:'id', hidden: true },
                         {name:'title', index:'title', width:500, align:'left' },
+                        {name:'slotType', index:'slotType', width:80, align:'left', formatter: slotTypeFormatter },
+                        {name:'materielType', index:'materielType', width:170, align:'left', formatter: materielTypeFormatter },
                         {name:'start', index:'start', width:120, align:'center' },
                         {name:'end', index:'end', width:120, align:'center' },
-                        {name:'action', index:'action', width:100, align:'center' },
+                        {name:'action', index:'action', width:60, align:'center' },
                         {name:'active', index:'active', hidden: true }
                     ],
                     loadComplete: function(){
