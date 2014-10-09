@@ -331,6 +331,24 @@ module.exports = function (grunt) {
         cwd: '<%= yeoman.app %>/styles',
         dest: '.tmp/styles/',
         src: '{,*/}*.css'
+      },
+      loc: {
+        expand: true,
+        cwd: '<%= yeoman.dist %>',
+        dest: 'build/loc',
+        src: '**'
+      },
+      dev: {
+        expand: true,
+        cwd: '<%= yeoman.dist %>',
+        dest: 'build/dev',
+        src: '**'
+      },
+      scripts: {
+        expand: true,
+        cwd: '<%= yeoman.dist %>/scripts',
+        dest: '.tmp/scripts',
+        src: '**'
       }
     },
 
@@ -354,6 +372,38 @@ module.exports = function (grunt) {
       unit: {
         configFile: 'test/karma.conf.js',
         singleRun: true
+      }
+    },
+    replace: {
+      loc: {
+        options: {
+          'patterns': [ 
+              { 'match': 'AD_SCREEN_SERVICE', 'replacement': 'http://127.0.0.1:8341' }
+          ]
+        },
+        files: [
+          { expand: true, flatten: true, src: ['.tmp/scripts/**'], dest: 'build/loc/scripts' }
+        ]
+      },
+      dev: {
+        options: {
+          'patterns': [ 
+              { 'match': 'AD_SCREEN_SERVICE', 'replacement': 'http://113.10.167.163:8341' }
+          ]
+        },
+        files: [
+          { expand: true, flatten: true, src: ['.tmp/scripts/**'], dest: 'build/dev/scripts' }
+        ]
+      },
+      pro: {
+        options: {
+          'patterns': [ 
+              { 'match': 'AD_SCREEN_SERVICE', 'replacement': 'http://113.10.167.163:8341' }
+          ]
+        },
+        files: [
+          { expand: true, flatten: true, src: ['.tmp/scripts/**'], dest: '<%= yeoman.dist %>/scripts' }
+        ]
       }
     }
   });
@@ -400,7 +450,11 @@ module.exports = function (grunt) {
     'uglify',
     'filerev',
     'usemin',
-    'htmlmin'
+    'htmlmin',
+    'copy:loc',
+    'copy:dev',
+    'copy:scripts',
+    'replace'
   ]);
 
   grunt.registerTask('default', [

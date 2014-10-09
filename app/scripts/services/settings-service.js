@@ -9,7 +9,7 @@
  */
 angular.module('adScreenMonitor')
   .factory('settingsService', function () {
-    var root = 'http://127.0.0.1:8341';
+    var root = '@@AD_SCREEN_SERVICE';
 
     // Public API here
     return {
