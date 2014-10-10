@@ -1,1 +1,110 @@
-<!doctype html> <html ng-app="adScreenMonitor"> <head> <meta charset="utf-8"> <title></title> <meta name="description" content=""> <meta name="viewport" content="width=device-width"> <link rel="stylesheet" href="styles/css/vendor.d492e5fc.css"> <link rel="stylesheet" href="styles/css/skins.aad2acb3.css">  <body ng-controller="MainController"> <div id="header"> <h1><a href="/">LocalAd Admin</a></h1> </div> <div id="sidebar" ng-controller="SideNavController"> <ul> <li ng-repeat="item in items" ng-class="{ active: item.active, submenu: !!item.items.length, open:item.open }"> <a href="{{ item.url }}"><span>{{ item.title }}</span></a> <ul> <li ng-repeat="sub in item.items" ng-class="{ active: sub.active }"><a ng-href="{{ sub.url }}">{{ sub.title }}</a></li> </ul> </li> </ul> </div> <div id="content" ng-view> </div> <div id="footer" class="span12"> <p>2014 &copy; LocalAd 局域网本地广告 <a href="http://www.LocalAd.com.cn">http://www.LocalAd.com.cn</a></p> <p>系统外观模板（Unicorn Admin Template）由 <a href="https://wrapbootstrap.com/user/diablo9983">diablo9983@gmail.com</a> 提供</p> </div> <script src="scripts/vendor.d433f46c.js"></script> <script src="scripts/scripts.c2249b84.js"></script>  
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Ad Screen Monitor by com-localad</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>Ad Screen Monitor</h1>
+        <p>互联网广告屏管理系统监视器</p>
+
+        <p class="view"><a href="https://github.com/com-localad/ad-screen-monitor">View the Project on GitHub <small>com-localad/ad-screen-monitor</small></a></p>
+
+
+        <ul>
+          <li><a href="https://github.com/com-localad/ad-screen-monitor/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/com-localad/ad-screen-monitor/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/com-localad/ad-screen-monitor">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <h1>
+<a name="%E4%BA%92%E8%81%94%E7%BD%91%E5%B9%BF%E5%91%8A%E5%B1%8F%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F%E7%9B%91%E8%A7%86%E5%99%A8" class="anchor" href="#%E4%BA%92%E8%81%94%E7%BD%91%E5%B9%BF%E5%91%8A%E5%B1%8F%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F%E7%9B%91%E8%A7%86%E5%99%A8"><span class="octicon octicon-link"></span></a>互联网广告屏管理系统监视器</h1>
+
+<h2>
+<a name="%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9" class="anchor" href="#%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9"><span class="octicon octicon-link"></span></a>注意事项</h2>
+
+<ul>
+<li>使用Firefox浏览器打开index.html进行管理。</li>
+</ul>
+
+<h2>
+<a name="%E5%8A%9F%E8%83%BD%E5%88%97%E8%A1%A8" class="anchor" href="#%E5%8A%9F%E8%83%BD%E5%88%97%E8%A1%A8"><span class="octicon octicon-link"></span></a>功能列表</h2>
+
+<h3>
+<a name="%E7%BB%88%E7%AB%AF%E7%BB%84" class="anchor" href="#%E7%BB%88%E7%AB%AF%E7%BB%84"><span class="octicon octicon-link"></span></a>终端组</h3>
+
+<ul>
+<li>添加广告屏终端的分组信息。</li>
+<li>修改广告屏终端的分组信息。</li>
+<li>从列表点击进行查看分组中的广告屏终端。</li>
+</ul>
+
+<h3>
+<a name="%E7%BB%88%E7%AB%AF%E7%AE%A1%E7%90%86" class="anchor" href="#%E7%BB%88%E7%AB%AF%E7%AE%A1%E7%90%86"><span class="octicon octicon-link"></span></a>终端管理</h3>
+
+<ul>
+<li>从分组列表中选择分组，查看分组中广告屏终端的列表。</li>
+<li>添加广告屏终端的信息。</li>
+<li>修改广告屏终端的信息。</li>
+<li><strong>点击打开新浏览器窗口，查看特定终端的广告展示效果，并获取广告屏终端HTML的URL地址。</strong></li>
+</ul>
+
+<p><strong>提示：</strong>获取广告屏终端HTML地址后，可以分发到各相应广告屏终端，用来展示广告。</p>
+
+<h3>
+<a name="%E5%B9%BF%E5%91%8A%E7%AE%A1%E7%90%86" class="anchor" href="#%E5%B9%BF%E5%91%8A%E7%AE%A1%E7%90%86"><span class="octicon octicon-link"></span></a>广告管理</h3>
+
+<ul>
+<li>默认进入全部广告的列表。</li>
+<li>根据检索条件，查询特定广告屏终端展示可以展示的广告列表。</li>
+<li>点击重置列表按钮，可以再次进入全部广告的默认列表。</li>
+<li>从列表上，点击暂停或激活按钮，用来启动或停止正在投放期间的广告。</li>
+<li>从列表上，点击编辑按钮，进入广告信息的编辑界面（使用方法同添加广告）。</li>
+</ul>
+
+<p><strong>提示：</strong>为减小服务器端计算压力，表格默认为100页，所以有可能翻页后，列表中没有数据。</p>
+
+<h3>
+<a name="%E6%B7%BB%E5%8A%A0%E5%B9%BF%E5%91%8A" class="anchor" href="#%E6%B7%BB%E5%8A%A0%E5%B9%BF%E5%91%8A"><span class="octicon octicon-link"></span></a>添加广告</h3>
+
+<ul>
+<li>选择广告的位置，以及物料的类型。</li>
+<li>填写广告的主题（图片和视频物料用于方便管理，滚动文本广告用于显示广告文本）。</li>
+<li>上传广告物料。<strong>提示：</strong>需要严格按照物料类型所规定的宽、高尺寸上传物料。图片只允许上传JPG和PNG格式，视频只允许上传MP4格式。</li>
+<li>设置需要投放目标的广告屏终端。</li>
+<li>设置广告投放的开始和结束时间。</li>
+<li>设置广告是否激活的状态（也可以在广告列表界面管理）。</li>
+</ul>
+
+<p><strong>提示：</strong>考虑到管理界面在有限范围内分发使用，对广告的添加和编辑表单，没有做输入合法性的验证。</p>
+
+<h2>
+<a name="%E8%B0%83%E5%BA%A6%E9%80%BB%E8%BE%91" class="anchor" href="#%E8%B0%83%E5%BA%A6%E9%80%BB%E8%BE%91"><span class="octicon octicon-link"></span></a>调度逻辑</h2>
+
+<ul>
+<li>当广告终端同时拥有投放状态的视频和图片广告时，只显示视频广告。</li>
+<li>当广告终端同时可以投放多个视频广告时，随机显示一个视频物料。</li>
+<li>固定图片广告位只显示一张图片物料，当存在多张时，随机选择一张图片物料。</li>
+<li>轮播图片和滚动文本都可以显示所有投放状态的广告。</li>
+</ul>
+      </section>
+      <footer>
+        <p>This project is maintained by <a href="https://github.com/com-localad">com-localad</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <script src="javascripts/scale.fix.js"></script>
+    
+  </body>
+</html>
