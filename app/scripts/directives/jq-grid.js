@@ -53,14 +53,10 @@ angular.module('adScreenMonitor')
             var compiled = _.template(template);
             buttons.push(compiled(data));
         }
-        function slotTypeFormatter ( cellvalue, options, rowObject ){
-            console.log(options);
-            console.log(rowObject);
+        function slotTypeFormatter ( cellvalue ){
             return slotTypes.hasOwnProperty(cellvalue) ? slotTypes[cellvalue] : '未定义';
         }
-        function materielTypeFormatter ( cellvalue, options, rowObject ){
-            console.log(options);
-            console.log(rowObject);
+        function materielTypeFormatter ( cellvalue ){
             return materielTypes.hasOwnProperty(cellvalue) ? materielTypes[cellvalue] : '未定义';
         }
         function getGridOptions(){
@@ -104,9 +100,12 @@ angular.module('adScreenMonitor')
                     },
                     width: '100%',
                     height: '100%',
-                    rowNum: 20,
-                    rowList: [20, 30, 50],
+                    rowNum: 50,
+                    //rowList: [20, 30, 50],
+                    loadonce: false,
                     viewrecords: false,
+                    pginput: false,
+                    gridview: true,
                     hidegrid: false
                 };
             };

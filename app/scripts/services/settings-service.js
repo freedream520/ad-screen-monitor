@@ -8,10 +8,13 @@
  * Factory in the adScreenMonitor.
  */
 angular.module('adScreenMonitor')
-  .factory('settingsService', function () {
+  .factory('settingsService', function ($location) {
+    var port = $location.port();
     var root = '@@AD_SCREEN_SERVICE';
+    if(9000 === port){
+      root = 'http://127.0.0.1:8341';
+    }
 
-    // Public API here
     return {
       getStaticService: function(){
         return root;

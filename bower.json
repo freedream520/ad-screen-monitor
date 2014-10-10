@@ -11,8 +11,7 @@
     "jquery-file-upload": "9.8.0",
     "bootstrap": "~2.2.1",
     "angular-route": "~1.2.24",
-    "restangular": "~1.4.0",
-    "ecomfe-echarts": "~2.0.1"
+    "restangular": "~1.4.0"
   },
   "ignore": [
     "**/.*",

@@ -22,12 +22,8 @@
             <button class="btn btn-primary" ng-click="resetList();"><i class="icon-refresh icon-white"></i> 重置列表</button>
         </div>
     </div>
-    <div class="widget-box">
-        <div class="widget-title">
-            <span class="icon"><i class="icon-th-list"></i></span>
-            <h5>广告屏广告</h5>
-        </div>
-        <div class="widget-content nopadding">
+    <div class="row-fluid">
+        <div id="adsTableContainer" class="span12">
             <table id="adsTable" jq-grid url="{{ jqGridUrl }}" datatype="jsonp" pager="#adsPager" caption="广告屏投放的广告列表" class="table table-bordered data-table"></table>  
             <div id="adsPager"></div>
         </div>

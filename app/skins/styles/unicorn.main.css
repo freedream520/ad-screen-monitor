@@ -1536,6 +1536,12 @@ form {
 
 
 /*- 自定义样式 -*/
+#adsTableContainer {
+    padding-top: 20px;
+}
+#adsPager_left {
+    display: none;
+}
 .ui-jqgrid .ui-jqgrid-bdiv{
     overflow: hidden;
 }

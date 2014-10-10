@@ -58,5 +58,6 @@ angular.module('adScreenMonitor')
             screenAdService.addItem(item);
         }
         $window.location.href = '#/screen-ad';
+        $window.location.reload();
     };
   });
